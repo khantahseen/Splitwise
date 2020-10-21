@@ -1,0 +1,9 @@
+C:\Users\asus\Documents\GitHub\Splitwise\Splitwise\Splitwise.Util\bin\Debug\netstandard2.1\Splitwise.Util.deps.json
+C:\Users\asus\Documents\GitHub\Splitwise\Splitwise\Splitwise.Util\bin\Debug\netstandard2.1\Splitwise.Util.dll
+C:\Users\asus\Documents\GitHub\Splitwise\Splitwise\Splitwise.Util\bin\Debug\netstandard2.1\Splitwise.Util.pdb
+C:\Users\asus\Documents\GitHub\Splitwise\Splitwise\Splitwise.Util\obj\Debug\netstandard2.1\Splitwise.Util.csprojAssemblyReference.cache
+C:\Users\asus\Documents\GitHub\Splitwise\Splitwise\Splitwise.Util\obj\Debug\netstandard2.1\Splitwise.Util.AssemblyInfoInputs.cache
+C:\Users\asus\Documents\GitHub\Splitwise\Splitwise\Splitwise.Util\obj\Debug\netstandard2.1\Splitwise.Util.AssemblyInfo.cs
+C:\Users\asus\Documents\GitHub\Splitwise\Splitwise\Splitwise.Util\obj\Debug\netstandard2.1\Splitwise.Util.csproj.CoreCompileInputs.cache
+C:\Users\asus\Documents\GitHub\Splitwise\Splitwise\Splitwise.Util\obj\Debug\netstandard2.1\Splitwise.Util.dll
+C:\Users\asus\Documents\GitHub\Splitwise\Splitwise\Splitwise.Util\obj\Debug\netstandard2.1\Splitwise.Util.pdb

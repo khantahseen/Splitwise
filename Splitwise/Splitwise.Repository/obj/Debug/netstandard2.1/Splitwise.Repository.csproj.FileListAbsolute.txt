@@ -1,0 +1,14 @@
+C:\Users\asus\Documents\GitHub\Splitwise\Splitwise\Splitwise.Repository\bin\Debug\netstandard2.1\Splitwise.Repository.deps.json
+C:\Users\asus\Documents\GitHub\Splitwise\Splitwise\Splitwise.Repository\bin\Debug\netstandard2.1\Splitwise.Repository.dll
+C:\Users\asus\Documents\GitHub\Splitwise\Splitwise\Splitwise.Repository\obj\Debug\netstandard2.1\Splitwise.Repository.csprojAssemblyReference.cache
+C:\Users\asus\Documents\GitHub\Splitwise\Splitwise\Splitwise.Repository\obj\Debug\netstandard2.1\Splitwise.Repository.AssemblyInfoInputs.cache
+C:\Users\asus\Documents\GitHub\Splitwise\Splitwise\Splitwise.Repository\obj\Debug\netstandard2.1\Splitwise.Repository.AssemblyInfo.cs
+C:\Users\asus\Documents\GitHub\Splitwise\Splitwise\Splitwise.Repository\bin\Debug\netstandard2.1\Splitwise.Repository.pdb
+C:\Users\asus\Documents\GitHub\Splitwise\Splitwise\Splitwise.Repository\bin\Debug\netstandard2.1\Splitwise.DomainModel.dll
+C:\Users\asus\Documents\GitHub\Splitwise\Splitwise\Splitwise.Repository\bin\Debug\netstandard2.1\Splitwise.Util.dll
+C:\Users\asus\Documents\GitHub\Splitwise\Splitwise\Splitwise.Repository\bin\Debug\netstandard2.1\Splitwise.DomainModel.pdb
+C:\Users\asus\Documents\GitHub\Splitwise\Splitwise\Splitwise.Repository\bin\Debug\netstandard2.1\Splitwise.Util.pdb
+C:\Users\asus\Documents\GitHub\Splitwise\Splitwise\Splitwise.Repository\obj\Debug\netstandard2.1\Splitwise.Repository.csproj.CoreCompileInputs.cache
+C:\Users\asus\Documents\GitHub\Splitwise\Splitwise\Splitwise.Repository\obj\Debug\netstandard2.1\Splitwise.Repository.csproj.CopyComplete
+C:\Users\asus\Documents\GitHub\Splitwise\Splitwise\Splitwise.Repository\obj\Debug\netstandard2.1\Splitwise.Repository.dll
+C:\Users\asus\Documents\GitHub\Splitwise\Splitwise\Splitwise.Repository\obj\Debug\netstandard2.1\Splitwise.Repository.pdb

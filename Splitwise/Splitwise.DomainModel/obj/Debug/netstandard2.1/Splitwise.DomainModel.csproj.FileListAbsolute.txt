@@ -1,0 +1,9 @@
+C:\Users\asus\Documents\GitHub\Splitwise\Splitwise\Splitwise.DomainModel\bin\Debug\netstandard2.1\Splitwise.DomainModel.deps.json
+C:\Users\asus\Documents\GitHub\Splitwise\Splitwise\Splitwise.DomainModel\bin\Debug\netstandard2.1\Splitwise.DomainModel.dll
+C:\Users\asus\Documents\GitHub\Splitwise\Splitwise\Splitwise.DomainModel\obj\Debug\netstandard2.1\Splitwise.DomainModel.csprojAssemblyReference.cache
+C:\Users\asus\Documents\GitHub\Splitwise\Splitwise\Splitwise.DomainModel\obj\Debug\netstandard2.1\Splitwise.DomainModel.AssemblyInfoInputs.cache
+C:\Users\asus\Documents\GitHub\Splitwise\Splitwise\Splitwise.DomainModel\obj\Debug\netstandard2.1\Splitwise.DomainModel.AssemblyInfo.cs
+C:\Users\asus\Documents\GitHub\Splitwise\Splitwise\Splitwise.DomainModel\bin\Debug\netstandard2.1\Splitwise.DomainModel.pdb
+C:\Users\asus\Documents\GitHub\Splitwise\Splitwise\Splitwise.DomainModel\obj\Debug\netstandard2.1\Splitwise.DomainModel.dll
+C:\Users\asus\Documents\GitHub\Splitwise\Splitwise\Splitwise.DomainModel\obj\Debug\netstandard2.1\Splitwise.DomainModel.pdb
+C:\Users\asus\Documents\GitHub\Splitwise\Splitwise\Splitwise.DomainModel\obj\Debug\netstandard2.1\Splitwise.DomainModel.csproj.CoreCompileInputs.cache
