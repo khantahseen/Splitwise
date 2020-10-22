@@ -5,8 +5,10 @@ using System.Text;
 
 namespace Splitwise.DomainModel.Models
 {
-    public class Users : IdentityUser
-    {
-        public string Name { get; set; }
-    }
+   
+        public class Users : IdentityUser
+        {
+            public string Name { get; set; }
+        }
+    
 }
