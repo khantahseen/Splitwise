@@ -4,7 +4,11 @@ using System.Text;
 
 namespace Splitwise.Core.ApplicationClasses
 {
-    class UsersAC
+    public class UsersAC
     {
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public string UserName { get; set; }
     }
 }

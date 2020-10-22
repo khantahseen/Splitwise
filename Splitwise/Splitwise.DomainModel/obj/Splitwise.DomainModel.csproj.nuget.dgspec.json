@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\asus\\Documents\\GitHub\\Splitwise\\Splitwise\\Splitwise.DomainModel\\Splitwise.DomainModel.csproj": {}
+    "C:\\Users\\asus\\Documents\\GitHub\\Splitwise\\SplitWise\\Splitwise.DomainModel\\Splitwise.DomainModel.csproj": {}
   },
   "projects": {
-    "C:\\Users\\asus\\Documents\\GitHub\\Splitwise\\Splitwise\\Splitwise.DomainModel\\Splitwise.DomainModel.csproj": {
+    "C:\\Users\\asus\\Documents\\GitHub\\Splitwise\\SplitWise\\Splitwise.DomainModel\\Splitwise.DomainModel.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\asus\\Documents\\GitHub\\Splitwise\\Splitwise\\Splitwise.DomainModel\\Splitwise.DomainModel.csproj",
+        "projectUniqueName": "C:\\Users\\asus\\Documents\\GitHub\\Splitwise\\SplitWise\\Splitwise.DomainModel\\Splitwise.DomainModel.csproj",
         "projectName": "Splitwise.DomainModel",
-        "projectPath": "C:\\Users\\asus\\Documents\\GitHub\\Splitwise\\Splitwise\\Splitwise.DomainModel\\Splitwise.DomainModel.csproj",
+        "projectPath": "C:\\Users\\asus\\Documents\\GitHub\\Splitwise\\SplitWise\\Splitwise.DomainModel\\Splitwise.DomainModel.csproj",
         "packagesPath": "C:\\Users\\asus\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\asus\\Documents\\GitHub\\Splitwise\\Splitwise\\Splitwise.DomainModel\\obj\\",
+        "outputPath": "C:\\Users\\asus\\Documents\\GitHub\\Splitwise\\SplitWise\\Splitwise.DomainModel\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\asus\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -7777,11 +7777,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\asus\\Documents\\GitHub\\Splitwise\\Splitwise\\Splitwise.Core\\Splitwise.Core.csproj",
+      "projectUniqueName": "C:\\Users\\asus\\Documents\\GitHub\\Splitwise\\SplitWise\\Splitwise.Core\\Splitwise.Core.csproj",
       "projectName": "Splitwise.Core",
-      "projectPath": "C:\\Users\\asus\\Documents\\GitHub\\Splitwise\\Splitwise\\Splitwise.Core\\Splitwise.Core.csproj",
+      "projectPath": "C:\\Users\\asus\\Documents\\GitHub\\Splitwise\\SplitWise\\Splitwise.Core\\Splitwise.Core.csproj",
       "packagesPath": "C:\\Users\\asus\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\asus\\Documents\\GitHub\\Splitwise\\Splitwise\\Splitwise.Core\\obj\\",
+      "outputPath": "C:\\Users\\asus\\Documents\\GitHub\\Splitwise\\SplitWise\\Splitwise.Core\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\asus\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -7797,8 +7797,8 @@
       "frameworks": {
         "netstandard2.1": {
           "projectReferences": {
-            "C:\\Users\\asus\\Documents\\GitHub\\Splitwise\\Splitwise\\Splitwise.Repository\\Splitwise.Repository.csproj": {
-              "projectPath": "C:\\Users\\asus\\Documents\\GitHub\\Splitwise\\Splitwise\\Splitwise.Repository\\Splitwise.Repository.csproj"
+            "C:\\Users\\asus\\Documents\\GitHub\\Splitwise\\SplitWise\\Splitwise.Repository\\Splitwise.Repository.csproj": {
+              "projectPath": "C:\\Users\\asus\\Documents\\GitHub\\Splitwise\\SplitWise\\Splitwise.Repository\\Splitwise.Repository.csproj"
             }
           }
         }

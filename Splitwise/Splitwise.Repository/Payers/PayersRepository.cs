@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Splitwise.Repository.Payers
 {
-    class PayersRepository
+    class PayersRepository:IPayersRepository
     {
     }
 }

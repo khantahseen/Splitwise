@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "DHg0/0pTAE53qdjJDARZOvfr42lZem69LYcgn5CNKhgcofdkg3eDAwFGbd5tzzVFxRpBcMsIgKy+FUizEMdpYg==",
+  "dgSpecHash": "FJH1XMjOfC+1/s4Syv5Tkm42ln3vnMRtkhynPC4ULeygQvLyd8nrZz4RfRZFTtcp1S7wWJpBq8YFTX4tHR5zpg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\asus\\Documents\\GitHub\\Splitwise\\Splitwise\\Splitwise.DomainModel\\Splitwise.DomainModel.csproj",
+  "projectFilePath": "C:\\Users\\asus\\Documents\\GitHub\\Splitwise\\SplitWise\\Splitwise.DomainModel\\Splitwise.DomainModel.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\asus\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.9\\microsoft.aspnetcore.cryptography.internal.3.1.9.nupkg.sha512",
     "C:\\Users\\asus\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\3.1.9\\microsoft.aspnetcore.cryptography.keyderivation.3.1.9.nupkg.sha512",

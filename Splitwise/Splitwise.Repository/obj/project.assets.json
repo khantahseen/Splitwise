@@ -7062,11 +7062,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\asus\\Documents\\GitHub\\Splitwise\\Splitwise\\Splitwise.Repository\\Splitwise.Repository.csproj",
+      "projectUniqueName": "C:\\Users\\asus\\Documents\\GitHub\\Splitwise\\SplitWise\\Splitwise.Repository\\Splitwise.Repository.csproj",
       "projectName": "Splitwise.Repository",
-      "projectPath": "C:\\Users\\asus\\Documents\\GitHub\\Splitwise\\Splitwise\\Splitwise.Repository\\Splitwise.Repository.csproj",
+      "projectPath": "C:\\Users\\asus\\Documents\\GitHub\\Splitwise\\SplitWise\\Splitwise.Repository\\Splitwise.Repository.csproj",
       "packagesPath": "C:\\Users\\asus\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\asus\\Documents\\GitHub\\Splitwise\\Splitwise\\Splitwise.Repository\\obj\\",
+      "outputPath": "C:\\Users\\asus\\Documents\\GitHub\\Splitwise\\SplitWise\\Splitwise.Repository\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\asus\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -7082,11 +7082,11 @@
       "frameworks": {
         "netstandard2.1": {
           "projectReferences": {
-            "C:\\Users\\asus\\Documents\\GitHub\\Splitwise\\Splitwise\\Splitwise.DomainModel\\Splitwise.DomainModel.csproj": {
-              "projectPath": "C:\\Users\\asus\\Documents\\GitHub\\Splitwise\\Splitwise\\Splitwise.DomainModel\\Splitwise.DomainModel.csproj"
+            "C:\\Users\\asus\\Documents\\GitHub\\Splitwise\\SplitWise\\Splitwise.DomainModel\\Splitwise.DomainModel.csproj": {
+              "projectPath": "C:\\Users\\asus\\Documents\\GitHub\\Splitwise\\SplitWise\\Splitwise.DomainModel\\Splitwise.DomainModel.csproj"
             },
-            "C:\\Users\\asus\\Documents\\GitHub\\Splitwise\\Splitwise\\Splitwise.Util\\Splitwise.Util.csproj": {
-              "projectPath": "C:\\Users\\asus\\Documents\\GitHub\\Splitwise\\Splitwise\\Splitwise.Util\\Splitwise.Util.csproj"
+            "C:\\Users\\asus\\Documents\\GitHub\\Splitwise\\SplitWise\\Splitwise.Util\\Splitwise.Util.csproj": {
+              "projectPath": "C:\\Users\\asus\\Documents\\GitHub\\Splitwise\\SplitWise\\Splitwise.Util\\Splitwise.Util.csproj"
             }
           }
         }

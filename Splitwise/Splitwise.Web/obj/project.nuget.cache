@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "lo1L14HEGxS9i0IS2cRlHOOV34fjdWKjtcp2Y4wyg0yr85T5UlFpD5q2qbUrsEs/ee4zlHiIc2qeyyufWKBeaw==",
+  "dgSpecHash": "oZvFNP/T4LRQdYIUJPxlloQ1gblbhJKB1aRLxcU2Hr9iQFAWfs1BGAzTRgo3C/u14+ogZJeqZQyJE1v4Ip5MEw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\asus\\Documents\\GitHub\\Splitwise\\Splitwise\\Splitwise.Web\\Splitwise.Web.csproj",
+  "projectFilePath": "C:\\Users\\asus\\Documents\\GitHub\\Splitwise\\SplitWise\\Splitwise.Web\\Splitwise.Web.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\asus\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\asus\\.nuget\\packages\\microsoft.aspnetcore.authentication.core\\2.2.0\\microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512",

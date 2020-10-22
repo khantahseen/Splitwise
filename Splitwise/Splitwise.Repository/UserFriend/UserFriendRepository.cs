@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Splitwise.Repository.UserFriend
 {
-    class UserFriendRepository
+    class UserFriendRepository:IUserFriendRepository
     {
     }
 }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Splitwise.Repository.Expenses
 {
-    class ExpensesRepository
+    class ExpensesRepository:IExpensesRepository
     {
     }
 }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Splitwise.Repository.Users
 {
-    class UserRepository
+    class UserRepository:IUserRepository
     {
     }
 }

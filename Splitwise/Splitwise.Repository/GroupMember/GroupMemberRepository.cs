@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Splitwise.Repository.GroupMember
 {
-    class GroupMemberRepository
+    class GroupMemberRepository:IGroupMemberRepository
     {
     }
 }

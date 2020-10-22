@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "iAQupCPu8l+OjDhyxrg2ue0jBzgPSNj8+yYpxcjvd6J9FZy4Q7K18hygQ6O7/x0/GkPqDBm/qZg077/uuk/d8Q==",
+  "dgSpecHash": "eW/olZXBJOdr3UMqvcaandT+FRWoaspmRNFFHFaS7QEf95IxFAvQyv+psdp5aT0MiFjHxw7gqEX2+qLndoAKSA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\asus\\Documents\\GitHub\\Splitwise\\Splitwise\\Splitwise.Repository.Test\\Splitwise.Repository.Test.csproj",
+  "projectFilePath": "C:\\Users\\asus\\Documents\\GitHub\\Splitwise\\SplitWise\\Splitwise.Repository.Test\\Splitwise.Repository.Test.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\asus\\.nuget\\packages\\coverlet.collector\\1.3.0\\coverlet.collector.1.3.0.nupkg.sha512",
     "C:\\Users\\asus\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.9\\microsoft.aspnetcore.cryptography.internal.3.1.9.nupkg.sha512",

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Splitwise.Repository.Settlements
 {
-    class SettlementsRepository
+    class SettlementsRepository:ISettlementsRepository
     {
     }
 }

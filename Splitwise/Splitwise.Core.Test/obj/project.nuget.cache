@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "1Souyvk2zPYROhBazH8G08H5KQ5vFbpOZ+Pkagb7PMOCwrzfi7wV6D/zeSK+kDFQEmM5ABuH/TtB4t9ZeRxleQ==",
+  "dgSpecHash": "rZdD3hAnAEVWWz8c8EbC52pQiYoVk2xm0SQq2+77y45EAM5HbkfRdJyUfD6JMx5FF630mptn65Wm5qdi+46Kvw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\asus\\Documents\\GitHub\\Splitwise\\Splitwise\\Splitwise.Core.Test\\Splitwise.Core.Test.csproj",
+  "projectFilePath": "C:\\Users\\asus\\Documents\\GitHub\\Splitwise\\SplitWise\\Splitwise.Core.Test\\Splitwise.Core.Test.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\asus\\.nuget\\packages\\coverlet.collector\\1.3.0\\coverlet.collector.1.3.0.nupkg.sha512",
     "C:\\Users\\asus\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",

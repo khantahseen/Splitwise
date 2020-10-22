@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Splitwise.Core.ApplicationClasses
 {
-    class UserFriendAC
+    public class UserFriendAC
     {
     }
 }
