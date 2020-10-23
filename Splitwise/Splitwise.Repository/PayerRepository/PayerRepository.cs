@@ -14,6 +14,11 @@ namespace Splitwise.Repository.PayerRepository
             throw new NotImplementedException();
         }
 
+        public Task DeletePayer(PayersAC Payer)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<PayersAC> GetPayer(int id)
         {
             throw new NotImplementedException();

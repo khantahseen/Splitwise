@@ -11,10 +11,10 @@ namespace Splitwise.Repository.GroupMemberRepository
     {
         IEnumerable<GroupMemberAC> GetGroupMembers();
         Task<GroupMemberAC> GetGroupMember(int id);
-        Task CreateGroupMember(GroupMember GroupMemberMapping);
-        void UpdateGroupMember(GroupMember GroupMemberMapping);
+        Task CreateGroupMember(GroupMember GroupMember);
+        void UpdateGroupMember(GroupMember GroupMember);
 
-        //Task DeleteGroupMember(GroupMemberAC GroupMemberMapping);
+        Task DeleteGroupMember(GroupMemberAC GroupMember);
         Task DeleteGroupMemberByGroupId(int id);
         bool GroupMemberExists(int id);
     }

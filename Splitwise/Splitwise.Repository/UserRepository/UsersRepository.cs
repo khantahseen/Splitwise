@@ -4,14 +4,22 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using Splitwise.DomainModel.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace Splitwise.Repository.UserRepository
 {
     public class UsersRepository : IUsersRepository
     {
-        public Task CreateUser(Users user)
+        private readonly UserManager<Users> _userManager;
+
+        public UsersRepository(UserManager<Users> _userManager)
         {
-            throw new NotImplementedException();
+            this._userManager = _userManager;
+        }
+        public async Task CreateUser(Users user)
+        {
+           await _userManager.CreateAsync(user);
+           //throw new NotImplementedException();
         }
 
         public Task DeleteUser(UsersAC user)

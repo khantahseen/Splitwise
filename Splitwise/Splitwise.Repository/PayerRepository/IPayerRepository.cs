@@ -15,7 +15,7 @@ namespace Splitwise.Repository.PayerRepository
         Task<PayersAC> GetPayer(int id);
         void CreatePayer(Payers Payer);
         void UpdatePayer(Payers Payer);
-        //Task DeletePayer(PayersAC Payer);
+        Task DeletePayer(PayersAC Payer);
         bool PayerExists(int id);
     }
 }

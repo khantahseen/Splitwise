@@ -34,6 +34,11 @@ namespace Splitwise.Repository.GroupRepository
             throw new NotImplementedException();
         }
 
+        public Task GetGroupWithDetails(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public bool GroupExists(int id)
         {
             throw new NotImplementedException();

@@ -14,6 +14,11 @@ namespace Splitwise.Repository.ExpenseRepository
             throw new NotImplementedException();
         }
 
+        public Task DeleteExpense(ExpensesAC Expense)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task DeleteExpensesByGroupId(int id)
         {
             throw new NotImplementedException();

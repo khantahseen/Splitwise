@@ -13,7 +13,7 @@ namespace Splitwise.Repository.ExpenseRepository
         Task<ExpensesAC> GetExpense(int id);
         void CreateExpense(Expenses Expense);
         void UpdateExpense(Expenses Expense);
-        //Task DeleteExpense(ExpensesAC Expense);
+        Task DeleteExpense(ExpensesAC Expense);
         Task DeleteExpensesByGroupId(int id);
         bool ExpenseExists(int id);
     }

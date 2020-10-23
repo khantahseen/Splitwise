@@ -14,6 +14,11 @@ namespace Splitwise.Repository.GroupMemberRepository
             throw new NotImplementedException();
         }
 
+        public Task DeleteGroupMember(GroupMemberAC GroupMember)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task DeleteGroupMemberByGroupId(int id)
         {
             throw new NotImplementedException();

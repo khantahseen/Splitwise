@@ -20,6 +20,6 @@ namespace Splitwise.Repository.GroupRepository
         Task DeleteGroup(GroupsAC Group);
        
         bool GroupExists(int id);
-
+        Task GetGroupWithDetails(int id);
     }
 }
