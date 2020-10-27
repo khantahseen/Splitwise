@@ -39,6 +39,11 @@ namespace Splitwise.Repository.ExpenseRepository
             throw new NotImplementedException();
         }
 
+        public Task Save()
+        {
+            throw new NotImplementedException();
+        }
+
         public void UpdateExpense(Expenses Expense)
         {
             throw new NotImplementedException();

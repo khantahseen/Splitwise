@@ -1,4 +1,5 @@
-﻿using Splitwise.DomainModel.ApplicationClasses;
+﻿using Microsoft.AspNetCore.Identity;
+using Splitwise.DomainModel.ApplicationClasses;
 using Splitwise.DomainModel.Models;
 using System;
 using System.Collections.Generic;

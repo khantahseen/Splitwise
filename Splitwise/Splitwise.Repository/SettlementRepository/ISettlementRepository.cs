@@ -17,5 +17,6 @@ namespace Splitwise.Repository.SettlementRepository
         void UpdateSettlement(Settlements Settlement);
         Task DeleteSettlement(SettlementsAC Settlement);
         bool SettlementExists(int id);
+        Task Save();
     }
 }

@@ -17,5 +17,6 @@ namespace Splitwise.Repository.PayerRepository
         void UpdatePayer(Payers Payer);
         Task DeletePayer(PayersAC Payer);
         bool PayerExists(int id);
+        Task Save();
     }
 }

@@ -44,6 +44,11 @@ namespace Splitwise.Repository.PayerRepository
             throw new NotImplementedException();
         }
 
+        public Task Save()
+        {
+            throw new NotImplementedException();
+        }
+
         public void UpdatePayer(Payers Payer)
         {
             throw new NotImplementedException();

@@ -84,7 +84,7 @@ namespace Splitwise.Core.ApiControllers
                 return BadRequest(ModelState);
             }
 
-            _groupRepository.CreateGroup(groups);
+            await _groupRepository.CreateGroup(groups);
             await _groupRepository.Save();
 
             return CreatedAtAction("GetGroups", new { id = groups.Id }, groups);

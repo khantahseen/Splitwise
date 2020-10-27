@@ -39,6 +39,11 @@ namespace Splitwise.Repository.GroupMemberRepository
             throw new NotImplementedException();
         }
 
+        public Task Save()
+        {
+            throw new NotImplementedException();
+        }
+
         public void UpdateGroupMember(GroupMember GroupMemberMapping)
         {
             throw new NotImplementedException();

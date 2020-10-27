@@ -39,6 +39,11 @@ namespace Splitwise.Repository.SettlementRepository
             throw new NotImplementedException();
         }
 
+        public Task Save()
+        {
+            throw new NotImplementedException();
+        }
+
         public bool SettlementExists(int id)
         {
             throw new NotImplementedException();

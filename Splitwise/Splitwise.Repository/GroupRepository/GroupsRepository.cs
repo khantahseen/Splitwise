@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Splitwise.Repository.GroupRepository
 {
-    class GroupRepository : IGroupRepository
+    public class GroupsRepository : IGroupRepository
     {
-        public void CreateGroup(Groups Group)
+        public Task CreateGroup(Groups Group)
         {
             throw new NotImplementedException();
         }
@@ -40,6 +40,11 @@ namespace Splitwise.Repository.GroupRepository
         }
 
         public bool GroupExists(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task Save()
         {
             throw new NotImplementedException();
         }

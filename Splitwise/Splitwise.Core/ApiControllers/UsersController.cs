@@ -24,6 +24,36 @@ namespace Splitwise.Core.ApiControllers
             _userManager = userManager;
         }
 
+        [HttpPost]
+        [Route("register")]
+        public async Task<IActionResult> Register(Register register)
+        {
+            var RegisteReturnModel = await _usersRepository.Register(register);
+            if (RegisteReturnModel != null)
+            {
+                return Ok(RegisteReturnModel);
+            }
+            else
+            {
+                return BadRequest(new { message = "User with Same Email Exist!!" });
+            }
+        }
+
+        [HttpPost]
+        [Route("login")]
+        public async Task<IActionResult> Login([FromBody] LoginAC login)
+        {
+            var loginReturnModel = await _usersRepository.Login(login);
+            if (loginReturnModel != null)
+            {
+                return Ok(loginReturnModel);
+            }
+            else
+            {
+                return BadRequest(new { message = "Username or Password is Incorrect." });
+            }
+        }
+
         // GET: api/Users
         [HttpGet]
         public IEnumerable<UsersAC> GetUsers()
@@ -33,7 +63,7 @@ namespace Splitwise.Core.ApiControllers
 
         // GET: api/Users/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetUsers([FromRoute] string id)
+        public async Task<IActionResult> GetUser([FromRoute] string id)
         {
             if (!ModelState.IsValid)
             {
@@ -41,6 +71,25 @@ namespace Splitwise.Core.ApiControllers
             }
 
             var users = await _usersRepository.GetUser(id);
+
+            if (users == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(users);
+        }
+
+        // GET: api/Users/ByEmail/abc@gmail.com
+        [HttpGet("ByEmail/{email}")]
+        public async Task<IActionResult> GetUserByEmail([FromRoute] string email)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var users = await _usersRepository.GetUserByEmail(email);
 
             if (users == null)
             {
@@ -84,42 +133,6 @@ namespace Splitwise.Core.ApiControllers
 
             return NoContent();
         }
-
-        // DELETE: api/Users/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUsers([FromRoute] string id)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            var users = await _usersRepository.GetUser(id);
-            if (users == null)
-            {
-                return NotFound();
-            }
-            await _usersRepository.DeleteUser(users);
-            //await _usersRepository.Save();
-
-            return Ok(users);
-        }
-
-        // POST: api/Users
-        [HttpPost]
-        public async Task<IActionResult> PostUsers([FromBody] Users users)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            await _usersRepository.CreateUser(users);
-            //await _usersRepository.Save();
-
-            return CreatedAtAction("GetUsers", new { id = users.Id }, users);
-        }
-
         private bool UsersExists(string id)
         {
             return _usersRepository.UserExists(id);

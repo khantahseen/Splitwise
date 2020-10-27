@@ -16,5 +16,6 @@ namespace Splitwise.Repository.ExpenseRepository
         Task DeleteExpense(ExpensesAC Expense);
         Task DeleteExpensesByGroupId(int id);
         bool ExpenseExists(int id);
+        Task Save();
     }
 }

@@ -1,4 +1,5 @@
-﻿using Splitwise.DomainModel.ApplicationClasses;
+﻿using Microsoft.AspNetCore.Identity;
+using Splitwise.DomainModel.ApplicationClasses;
 using Splitwise.DomainModel.Models;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ namespace Splitwise.Repository.UserFriendRepository
 {
     public interface IUserFriendRepository
     {
+       
         IEnumerable<UserFriendAC> GetUserFriends();
         Task<UserFriendAC> GetUserFriend(int id);
         void CreateUserFriend(UserFriend UserFriend);

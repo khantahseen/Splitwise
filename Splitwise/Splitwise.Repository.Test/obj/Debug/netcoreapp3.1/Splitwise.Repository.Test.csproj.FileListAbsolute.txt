@@ -119,7 +119,6 @@ C:\Users\asus\Documents\GitHub\Splitwise\Splitwise\Splitwise.Repository.Test\bin
 C:\Users\asus\Documents\GitHub\Splitwise\Splitwise\Splitwise.Repository.Test\bin\Debug\netcoreapp3.1\Splitwise.Repository.pdb
 C:\Users\asus\Documents\GitHub\Splitwise\Splitwise\Splitwise.Repository.Test\bin\Debug\netcoreapp3.1\Splitwise.DomainModel.pdb
 C:\Users\asus\Documents\GitHub\Splitwise\Splitwise\Splitwise.Repository.Test\bin\Debug\netcoreapp3.1\Splitwise.Util.pdb
-C:\Users\asus\Documents\GitHub\Splitwise\Splitwise\Splitwise.Repository.Test\obj\Debug\netcoreapp3.1\Splitwise.Repository.Test.csproj.CoreCompileInputs.cache
 C:\Users\asus\Documents\GitHub\Splitwise\Splitwise\Splitwise.Repository.Test\obj\Debug\netcoreapp3.1\Splitwise.Repository.Test.dll
 C:\Users\asus\Documents\GitHub\Splitwise\Splitwise\Splitwise.Repository.Test\obj\Debug\netcoreapp3.1\Splitwise.Repository.Test.pdb
 C:\Users\asus\Documents\GitHub\Splitwise\Splitwise\Splitwise.Repository.Test\bin\Debug\netcoreapp3.1\Microsoft.Data.SqlClient.dll
@@ -143,3 +142,15 @@ C:\Users\asus\Documents\GitHub\Splitwise\Splitwise\Splitwise.Repository.Test\bin
 C:\Users\asus\Documents\GitHub\Splitwise\Splitwise\Splitwise.Repository.Test\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\asus\Documents\GitHub\Splitwise\Splitwise\Splitwise.Repository.Test\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\asus\Documents\GitHub\Splitwise\Splitwise\Splitwise.Repository.Test\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\asus\Documents\GitHub\Splitwise\SplitWise\Splitwise.Repository.Test\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.InMemory.dll
+C:\Users\asus\Documents\GitHub\Splitwise\SplitWise\Splitwise.Repository.Test\bin\Debug\netcoreapp3.1\Castle.Core.dll
+C:\Users\asus\Documents\GitHub\Splitwise\SplitWise\Splitwise.Repository.Test\bin\Debug\netcoreapp3.1\Moq.dll
+C:\Users\asus\Documents\GitHub\Splitwise\SplitWise\Splitwise.Repository.Test\bin\Debug\netcoreapp3.1\nunit.framework.dll
+C:\Users\asus\Documents\GitHub\Splitwise\SplitWise\Splitwise.Repository.Test\bin\Debug\netcoreapp3.1\NUnit3.TestAdapter.dll
+C:\Users\asus\Documents\GitHub\Splitwise\SplitWise\Splitwise.Repository.Test\bin\Debug\netcoreapp3.1\NUnit3.TestAdapter.pdb
+C:\Users\asus\Documents\GitHub\Splitwise\SplitWise\Splitwise.Repository.Test\bin\Debug\netcoreapp3.1\nunit.engine.dll
+C:\Users\asus\Documents\GitHub\Splitwise\SplitWise\Splitwise.Repository.Test\bin\Debug\netcoreapp3.1\nunit.engine.api.dll
+C:\Users\asus\Documents\GitHub\Splitwise\SplitWise\Splitwise.Repository.Test\bin\Debug\netcoreapp3.1\nunit.engine.core.dll
+C:\Users\asus\Documents\GitHub\Splitwise\SplitWise\Splitwise.Repository.Test\bin\Debug\netcoreapp3.1\Microsoft.DotNet.InternalAbstractions.dll
+C:\Users\asus\Documents\GitHub\Splitwise\SplitWise\Splitwise.Repository.Test\bin\Debug\netcoreapp3.1\System.Xml.XPath.XmlDocument.dll
+C:\Users\asus\Documents\GitHub\Splitwise\SplitWise\Splitwise.Repository.Test\obj\Debug\netcoreapp3.1\Splitwise.Repository.Test.csproj.CoreCompileInputs.cache

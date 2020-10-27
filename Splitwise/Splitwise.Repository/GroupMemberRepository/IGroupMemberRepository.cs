@@ -17,5 +17,6 @@ namespace Splitwise.Repository.GroupMemberRepository
         Task DeleteGroupMember(GroupMemberAC GroupMember);
         Task DeleteGroupMemberByGroupId(int id);
         bool GroupMemberExists(int id);
+        Task Save();
     }
 }

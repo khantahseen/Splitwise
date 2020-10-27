@@ -15,11 +15,12 @@ namespace Splitwise.Repository.GroupRepository
 
         //To be included later
         //Task<GroupAndMembersAC> GetGroupWithDetails(int id);
-        void CreateGroup(Groups Group);
+        Task CreateGroup(Groups Group);
         void UpdateGroup(Groups Group);
         Task DeleteGroup(GroupsAC Group);
        
         bool GroupExists(int id);
         Task GetGroupWithDetails(int id);
+        Task Save();
     }
 }
