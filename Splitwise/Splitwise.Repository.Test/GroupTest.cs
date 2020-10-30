@@ -15,7 +15,7 @@ namespace Splitwise.Repository.Test
         public void CreateUserTest()
         {
             Groups u1 = new Groups();
-            Assert.ThrowsExceptionAsync<NotImplementedException>(() => user.CreateGroup(u1));
+           // Assert.ThrowsExceptionAsync<NotImplementedException>(() => user.CreateGroup(u1));
         }
     }
 }

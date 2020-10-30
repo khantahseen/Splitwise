@@ -85,41 +85,6 @@ namespace Splitwise.Core.ApiControllers
             return Ok(payers);
         }
 
-        // PUT: api/Payers/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutPayers([FromRoute] int id, [FromBody] Payers payers)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != payers.Id)
-            {
-                return BadRequest();
-            }
-
-            _payersRepository.UpdatePayer(payers);
-
-            try
-            {
-                await _payersRepository.Save();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!PayersExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
         // POST: api/Payers
         [HttpPost]
         public async Task<IActionResult> PostPayers([FromBody] Payers payers)

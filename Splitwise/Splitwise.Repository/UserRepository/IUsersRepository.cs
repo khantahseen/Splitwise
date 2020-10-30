@@ -16,8 +16,9 @@ namespace Splitwise.Repository.UserRepository
         IEnumerable<UsersAC> GetAllFriends(string id);
         Task<UsersAC> GetUser(string id);
         Task<UsersAC> GetUserByEmail(string email);
-        void UpdateUser(Users user);
+        Task<IdentityResult> UpdateUser(UsersAC user);
+        Task DeleteUser(string id);
         bool UserExists(string id);
-        Task Save();
+        //Task Save();
     }
 }

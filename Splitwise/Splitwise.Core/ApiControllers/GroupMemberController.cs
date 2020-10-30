@@ -9,7 +9,9 @@ using System.Threading.Tasks;
 
 namespace Splitwise.Core.ApiControllers
 {
-    class GroupMemberController:ControllerBase
+    [Route("api/[controller]")]
+    [ApiController]
+    public class GroupMemberController:ControllerBase
     {
         private readonly IGroupMemberRepository _groupMemberRepository;
 
@@ -18,12 +20,7 @@ namespace Splitwise.Core.ApiControllers
             this._groupMemberRepository = groupMemberRepository;
         }
 
-        // GET: api/GroupMembers
-        [HttpGet]
-        public IEnumerable<GroupMemberAC> GetGroupMembers()
-        {
-            return _groupMemberRepository.GetGroupMembers();
-        }
+  
         
         // GET: api/GroupMember/5
         [HttpGet("{id}")]
@@ -34,7 +31,7 @@ namespace Splitwise.Core.ApiControllers
                 return BadRequest(ModelState);
             }
 
-            var groupMemberMappings = await _groupMemberRepository.GetGroupMember(id);
+            var groupMemberMappings = _groupMemberRepository.GetGroupMembers(id);
 
             if (groupMemberMappings == null)
             {
@@ -53,10 +50,10 @@ namespace Splitwise.Core.ApiControllers
                 return BadRequest(ModelState);
             }
 
-            await _groupMemberRepository.CreateGroupMember(groupMember);
+            _groupMemberRepository.CreateGroupMember(groupMember);
             await _groupMemberRepository.Save();
 
-            return CreatedAtAction("GetGroupMemberMappings", new { id = groupMember.Id }, groupMember);
+            return Ok();
         }
 
         // DELETE: api/GroupMember/5
@@ -68,13 +65,13 @@ namespace Splitwise.Core.ApiControllers
                 return BadRequest(ModelState);
             }
 
-            var groupMember = await _groupMemberRepository.GetGroupMember(id);
+            var groupMember = _groupMemberRepository.GetGroupMembers(id);
             if (groupMember == null)
             {
                 return NotFound();
             }
 
-            await _groupMemberRepository.DeleteGroupMember(groupMember);
+            await _groupMemberRepository.DeleteGroupMember((GroupMemberAC)groupMember);
             await _groupMemberRepository.Save();
 
             return Ok(groupMember);

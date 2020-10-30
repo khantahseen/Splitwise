@@ -9,7 +9,6 @@ namespace Splitwise.Repository.ExpenseRepository
 {
     public interface IExpenseRepository
     {
-        IEnumerable<ExpensesAC> GetExpenses();
         Task<ExpensesAC> GetExpense(int id);
         void CreateExpense(Expenses Expense);
         void UpdateExpense(Expenses Expense);

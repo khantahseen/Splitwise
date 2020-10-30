@@ -22,11 +22,11 @@ namespace Splitwise.Core.ApiControllers
         }
 
         // GET: api/Expenses
-        [HttpGet]
-        public IEnumerable<ExpensesAC> GetExpenses()
-        {
-            return _expensesRepository.GetExpenses();
-        }
+       // [HttpGet]
+        //public IEnumerable<ExpensesAC> GetExpenses()
+        //{
+          //  return _expensesRepository.GetExpenses();
+        //}
 
         // GET: api/Expenses/5
         [HttpGet("{id}")]
@@ -94,7 +94,8 @@ namespace Splitwise.Core.ApiControllers
             _expensesRepository.CreateExpense(expenses);
             await _expensesRepository.Save();
 
-            return CreatedAtAction("GetExpenses", new { id = expenses.Id }, expenses);
+            return Ok();
+                //CreatedAtAction("GetExpenses", new { id = expenses.Id }, expenses);
         }
 
         // DELETE: api/Expenses/5

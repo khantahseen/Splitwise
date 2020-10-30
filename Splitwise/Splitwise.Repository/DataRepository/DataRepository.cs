@@ -11,18 +11,18 @@ using System.Threading.Tasks;
 
 namespace Splitwise.Repository.DataRepository
 {
-    class DataRepository : IDataRepository
+    public class DataRepository : IDataRepository
     {
         #region Private Members
         private SplitwiseDbContext _context;
-        private readonly IDbConnection _dbConnection;
+        //private readonly IDbConnection _dbConnection;
         #endregion
 
         #region Constructor
-        public DataRepository(SplitwiseDbContext context, IDbConnection dbConnection)
+        public DataRepository(SplitwiseDbContext context)
         {
             _context = context;
-            _dbConnection = dbConnection;
+            
         }
         #endregion
 

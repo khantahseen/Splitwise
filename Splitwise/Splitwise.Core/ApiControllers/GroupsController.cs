@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 
 namespace Splitwise.Core.ApiControllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class GroupsController:ControllerBase
     {
         private readonly IGroupRepository _groupRepository;
@@ -24,6 +26,20 @@ namespace Splitwise.Core.ApiControllers
         public IEnumerable<GroupsAC> GetGroups()
         {
             return _groupRepository.GetGroups();
+        }
+
+        // GET: api/Groups/2
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetGroupById([FromRoute] int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var groups =await _groupRepository.GetGroup(id);
+
+            return Ok(groups);
         }
 
         // GET: api/Groups/ByUserId
@@ -84,10 +100,11 @@ namespace Splitwise.Core.ApiControllers
                 return BadRequest(ModelState);
             }
 
-            await _groupRepository.CreateGroup(groups);
+            _groupRepository.CreateGroup(groups);
             await _groupRepository.Save();
+            return Ok();
 
-            return CreatedAtAction("GetGroups", new { id = groups.Id }, groups);
+            //return CreatedAtAction("GetGroups", new { id = groups.Id }, groups);
         }
 
         // DELETE: api/Groups/5

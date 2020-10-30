@@ -102,6 +102,9 @@ C:\Users\asus\Documents\GitHub\Splitwise\Splitwise\Splitwise.Web\obj\Debug\netco
 C:\Users\asus\Documents\GitHub\Splitwise\Splitwise\Splitwise.Web\obj\Debug\netcoreapp3.1\Splitwise.Web.genruntimeconfig.cache
 C:\Users\asus\Documents\GitHub\Splitwise\SplitWise\Splitwise.Web\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\asus\Documents\GitHub\Splitwise\SplitWise\Splitwise.Web\bin\Debug\netcoreapp3.1\AutoMapper.dll
+C:\Users\asus\Documents\GitHub\Splitwise\SplitWise\Splitwise.Web\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\asus\Documents\GitHub\Splitwise\SplitWise\Splitwise.Web\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\asus\Documents\GitHub\Splitwise\SplitWise\Splitwise.Web\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
 C:\Users\asus\Documents\GitHub\Splitwise\SplitWise\Splitwise.Web\obj\Debug\netcoreapp3.1\Splitwise.Web.csproj.CoreCompileInputs.cache
 C:\Users\asus\Documents\GitHub\Splitwise\SplitWise\Splitwise.Web\obj\Debug\netcoreapp3.1\Splitwise.Web.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\asus\Documents\GitHub\Splitwise\SplitWise\Splitwise.Web\obj\Debug\netcoreapp3.1\Splitwise.Web.MvcApplicationPartsAssemblyInfo.cache

@@ -107,17 +107,23 @@ namespace Splitwise.Repository.UserRepository
             //throw new NotImplementedException();
         }
 
-        public void UpdateUser(Users user)
+        public async Task<IdentityResult> UpdateUser(UsersAC user)
         {
-            _context.Entry(user).State = EntityState.Modified;
+            Users u = await _userManager.FindByIdAsync(user.Id);
+            u.Name = user.Name;
+            u.Email = user.Email;
+            u.UserName = user.UserName;
+
+            return await _userManager.UpdateAsync(u);
+            //_context.Entry(user).State = EntityState.Modified;
             //throw new NotImplementedException();
         }
         
-        public async Task Save()
-        {
-            await _context.SaveChangesAsync();
+       // public Task Save()
+       // {
+             //_context.SaveChanges();
             //throw new NotImplementedException();
-        }
+        //}
 
        
         public bool UserExists(string id)
@@ -126,6 +132,14 @@ namespace Splitwise.Repository.UserRepository
             //throw new NotImplementedException();
         }
 
-      
+        public async Task DeleteUser(string id)
+        {
+            var user = await _userManager.Users.Where(u => u.Id == id).SingleOrDefaultAsync();
+            if (user != null)
+            {
+                await _userManager.DeleteAsync(user);
+            }
+            //throw new NotImplementedException();
+        }
     }
 }

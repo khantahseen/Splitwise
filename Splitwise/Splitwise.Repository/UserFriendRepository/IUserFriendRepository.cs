@@ -10,12 +10,10 @@ namespace Splitwise.Repository.UserFriendRepository
 {
     public interface IUserFriendRepository
     {
-       
-        IEnumerable<UserFriendAC> GetUserFriends();
         Task<UserFriendAC> GetUserFriend(int id);
-        void CreateUserFriend(UserFriend UserFriend);
+
+        //void CreateUserFriend(UserFriend UserFriend);
         Task<UsersAC> CreateUserFriendByEmail(string id, Users user);
-        void UpdateUserFriend(UserFriend UserFriend);
         Task DeleteUserFriend(UserFriendAC UserFriend);
         Task DeleteUserFriendById(string userid1, string userid2);
         bool UserFriendExists(string id);

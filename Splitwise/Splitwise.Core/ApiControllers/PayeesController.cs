@@ -28,24 +28,6 @@ namespace Splitwise.Core.ApiControllers
             return _payeesRepository.GetPayees();
         }
 
-        // GET: api/Payees/5
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetPayees([FromRoute] int id)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            var payees = await _payeesRepository.GetPayee(id);
-
-            if (payees == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(payees);
-        }
 
         // GET: api/Payees/ByExpenseId/id
         [HttpGet("ByExpenseId/{id}")]
@@ -85,41 +67,6 @@ namespace Splitwise.Core.ApiControllers
             return Ok(payees);
         }
 
-        // PUT: api/Payees/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutPayees([FromRoute] int id, [FromBody] Payees payees)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != payees.Id)
-            {
-                return BadRequest();
-            }
-
-            _payeesRepository.UpdatePayee(payees);
-
-            try
-            {
-                await _payeesRepository.Save();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!PayeesExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
         // POST: api/Payees
         [HttpPost]
         public async Task<IActionResult> PostPayees([FromBody] Payees payees)
@@ -132,28 +79,8 @@ namespace Splitwise.Core.ApiControllers
             _payeesRepository.CreatePayee(payees);
             await _payeesRepository.Save();
 
-            return CreatedAtAction("GetPayees", new { id = payees.Id }, payees);
-        }
-
-        // DELETE: api/Payees/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeletePayees([FromRoute] int id)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            var payees = await _payeesRepository.GetPayee(id);
-            if (payees == null)
-            {
-                return NotFound();
-            }
-
-            await _payeesRepository.DeletePayee(payees);
-            await _payeesRepository.Save();
-
-            return Ok(payees);
+            return Ok();
+            //CreatedAtAction("GetPayees", new { id = payees.Id }, payees);
         }
 
         private bool PayeesExists(int id)

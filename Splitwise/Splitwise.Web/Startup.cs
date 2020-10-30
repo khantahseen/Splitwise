@@ -14,10 +14,19 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json.Serialization;
 using Splitwise.DomainModel;
 using Splitwise.DomainModel.ApplicationClasses;
 using Splitwise.DomainModel.Models;
+using Splitwise.Repository.DataRepository;
+using Splitwise.Repository.GroupMemberRepository;
+using Splitwise.Repository.GroupRepository;
 using Splitwise.Repository.UserRepository;
+using Splitwise.Repository.UserFriendRepository;
+using Splitwise.Repository.ExpenseRepository;
+using Splitwise.Repository.PayeeRepository;
+using Splitwise.Repository.PayerRepository;
+using Splitwise.Repository.SettlementRepository;
 
 namespace Splitwise.Web
 {
@@ -33,12 +42,33 @@ namespace Splitwise.Web
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllers()
+               .AddNewtonsoftJson(options =>
+               {
+                   var resolver = options.SerializerSettings.ContractResolver;
+                   if (resolver != null)
+                       (resolver as DefaultContractResolver).NamingStrategy = null;
+               });
+            services.AddControllersWithViews();
+
+            services.AddScoped<IDataRepository, DataRepository>();
             services.AddScoped<IUsersRepository, UsersRepository>();
+            services.AddScoped<IGroupRepository, GroupsRepository>();
+            services.AddScoped<IGroupMemberRepository, GroupMemberRepository>();
+            services.AddScoped<IUserFriendRepository, UserFriendRepository>();
+            services.AddScoped<IExpenseRepository, ExpenseRepository>();
+            services.AddScoped<IPayerRepository, PayerRepository>();
+            services.AddScoped<IPayeeRepository, PayeeRepository>();
+            services.AddScoped<ISettlementRepository, SettlementRepository>();
+            
+
             services.AddDbContext<SplitwiseDbContext>(options =>
             { 
                 options.UseSqlServer(Configuration.GetConnectionString("Mystring"),
                     b => b.MigrationsAssembly("Splitwise.DomainModel"));
             });
+
+
 
             services.AddIdentity<Users, IdentityRole>()
                 .AddEntityFrameworkStores<SplitwiseDbContext>();
@@ -69,6 +99,13 @@ namespace Splitwise.Web
             var configuration = new AutoMapper.MapperConfiguration(config =>
             {
                 config.CreateMap<Users, UsersAC>();
+                config.CreateMap<Groups, GroupsAC>();
+                config.CreateMap<GroupMember, GroupMemberAC>();
+                config.CreateMap<UserFriend, UserFriendAC>();
+                config.CreateMap<Expenses, ExpensesAC>();
+                config.CreateMap<Payers, PayersAC>();
+                config.CreateMap<Payees, PayeesAC>();
+                config.CreateMap<Settlements, SettlementsAC>();
             });
             IMapper mapper = configuration.CreateMapper();
             services.AddSingleton(mapper);

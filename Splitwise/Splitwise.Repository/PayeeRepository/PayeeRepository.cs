@@ -1,7 +1,11 @@
-﻿using Splitwise.DomainModel.ApplicationClasses;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using Splitwise.DomainModel;
+using Splitwise.DomainModel.ApplicationClasses;
 using Splitwise.DomainModel.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,49 +13,50 @@ namespace Splitwise.Repository.PayeeRepository
 {
     public class PayeeRepository : IPayeeRepository
     {
+        private SplitwiseDbContext _context;
+        private readonly IMapper _mapper;
+
+        public PayeeRepository(SplitwiseDbContext _context, IMapper _mapper)
+        {
+            this._context = _context;
+            this._mapper = _mapper;
+
+        }
         public void CreatePayee(Payees Payee)
         {
-            throw new NotImplementedException();
-        }
+            _context.Add(Payee);
 
-        public Task DeletePayee(PayeesAC Payee)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<PayeesAC> GetPayee(int id)
-        {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         public IEnumerable<PayeesAC> GetPayees()
         {
-            throw new NotImplementedException();
+            return _mapper.Map<IEnumerable<PayeesAC>>(_context.Payees.Include(t => t.User));
+            //throw new NotImplementedException();
         }
 
         public IEnumerable<PayeesAC> GetPayeesByExpenseId(int id)
         {
-            throw new NotImplementedException();
+            return _mapper.Map<IEnumerable<PayeesAC>>(_context.Payees.Include(t => t.User).Where(e => e.ExpenseId == id).ToList());
+            //throw new NotImplementedException();
         }
 
         public IEnumerable<PayeesAC> GetPayeesByPayeeId(string id)
         {
-            throw new NotImplementedException();
+            return _mapper.Map<IEnumerable<PayeesAC>>(_context.Payees.Where(e => e.PayeeId == id).ToList());
+            //throw new NotImplementedException();
         }
 
         public bool PayeeExists(int id)
         {
-            throw new NotImplementedException();
+            return _context.Payees.Any(e => e.Id == id);
+            //throw new NotImplementedException();
         }
 
-        public Task Save()
+        public async Task Save()
         {
-            throw new NotImplementedException();
-        }
-
-        public void UpdatePayee(Payees Payee)
-        {
-            throw new NotImplementedException();
+            await _context.SaveChangesAsync();
+            //throw new NotImplementedException();
         }
     }
 }

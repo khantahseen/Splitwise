@@ -1,7 +1,10 @@
-﻿using Splitwise.DomainModel.ApplicationClasses;
+﻿using AutoMapper;
+using Splitwise.DomainModel;
+using Splitwise.DomainModel.ApplicationClasses;
 using Splitwise.DomainModel.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,9 +12,18 @@ namespace Splitwise.Repository.ExpenseRepository
 {
     public class ExpenseRepository : IExpenseRepository
     {
+        private SplitwiseDbContext _context;
+        private readonly IMapper _mapper;
+       
+        public ExpenseRepository(SplitwiseDbContext _context, IMapper _mapper)
+        {
+            this._mapper = _mapper;
+            this._context = _context;
+        }
         public void CreateExpense(Expenses Expense)
         {
-            throw new NotImplementedException();
+            _context.Add(Expense);
+            //throw new NotImplementedException();
         }
 
         public Task DeleteExpense(ExpensesAC Expense)
@@ -26,22 +38,20 @@ namespace Splitwise.Repository.ExpenseRepository
 
         public bool ExpenseExists(int id)
         {
-            throw new NotImplementedException();
+            return _context.Expenses.Any(e => e.Id == id);
+            // throw new NotImplementedException();
         }
 
-        public Task<ExpensesAC> GetExpense(int id)
+        public async Task<ExpensesAC> GetExpense(int id)
         {
-            throw new NotImplementedException();
-        }
 
-        public IEnumerable<ExpensesAC> GetExpenses()
-        {
-            throw new NotImplementedException();
+            return _mapper.Map<ExpensesAC>(await _context.FindAsync<Expenses>(id));
+            // throw new NotImplementedException();
         }
-
-        public Task Save()
+        public async Task Save()
         {
-            throw new NotImplementedException();
+            await _context.SaveChangesAsync();
+            //throw new NotImplementedException();
         }
 
         public void UpdateExpense(Expenses Expense)

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Splitwise.Repository.DataRepository
 {
-    interface IDataRepository
+    public interface IDataRepository
     {
         Task<T> FirstAsync<T>(Expression<Func<T, bool>> predicate) where T : class;
         Task<T> FirstOrDefaultAsync<T>(Expression<Func<T, bool>> predicate) where T : class;

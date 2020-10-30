@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Splitwise.DomainModel;
 using Splitwise.DomainModel.ApplicationClasses;
 using Splitwise.DomainModel.Models;
 using Splitwise.Repository.UserRepository;
@@ -17,11 +18,13 @@ namespace Splitwise.Core.ApiControllers
     {
         private readonly IUsersRepository _usersRepository;
         private readonly UserManager<Users> _userManager;
+        private readonly SplitwiseDbContext _context;
 
-        public UsersController(IUsersRepository usersRepository, UserManager<Users> userManager)
+        public UsersController(IUsersRepository usersRepository, UserManager<Users> userManager, SplitwiseDbContext _context)
         {
             this._usersRepository = usersRepository;
             _userManager = userManager;
+            this._context = _context;
         }
 
         [HttpPost]
@@ -101,39 +104,28 @@ namespace Splitwise.Core.ApiControllers
 
         // PUT: api/Users/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUsers([FromRoute] string id, [FromBody] Users users)
+        public async Task<IActionResult> PutUsers([FromRoute] string id, [FromBody] UsersAC users)
         {
-            if (!ModelState.IsValid)
+            var u1 = await _usersRepository.UpdateUser(users);
+            if(u1!=null)
             {
-                return BadRequest(ModelState);
+                return Ok(u1);
             }
-
-            if (id != users.Id)
-            {
-                return BadRequest();
-            }
-
-            _usersRepository.UpdateUser(users);
-
-            try
-            {
-                await _usersRepository.Save();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!UsersExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            return NotFound();
         }
-        private bool UsersExists(string id)
+
+        //DELETE: api/user/id
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteEmployee(string id)
+        {
+            if (UsersExist(id))
+            {
+                await this._usersRepository.DeleteUser(id);
+                return Ok();
+            }
+            return NotFound();
+        }
+        private bool UsersExist(string id)
         {
             return _usersRepository.UserExists(id);
         }
