@@ -1,7 +1,11 @@
-﻿using Splitwise.DomainModel.ApplicationClasses;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using Splitwise.DomainModel;
+using Splitwise.DomainModel.ApplicationClasses;
 using Splitwise.DomainModel.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,14 +13,18 @@ namespace Splitwise.Repository.SettlementRepository
 {
     public class SettlementRepository : ISettlementRepository
     {
+        private SplitwiseDbContext _context;
+        private readonly IMapper _mapper;
+
+        public SettlementRepository(SplitwiseDbContext _context, IMapper _mapper)
+        {
+            this._mapper = _mapper;
+            this._context = _context;
+        }
         public void CreateSettlement(Settlements Settlement)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task DeleteSettlement(SettlementsAC Settlement)
-        {
-            throw new NotImplementedException();
+            _context.Add(Settlement);
+            //throw new NotImplementedException();
         }
 
         public Task<SettlementsAC> GetSettlement(int id)
@@ -26,12 +34,15 @@ namespace Splitwise.Repository.SettlementRepository
 
         public IEnumerable<SettlementsAC> GetSettlements()
         {
-            throw new NotImplementedException();
+            return _mapper.Map<IEnumerable<SettlementsAC>>(_context.Settlements.Include(p => p.Payee).Include(l => l.Payer));
+            //throw new NotImplementedException();
         }
 
         public IEnumerable<SettlementsAC> GetSettlementsByGroupId(int id)
         {
-            throw new NotImplementedException();
+            return _mapper.Map<IEnumerable<SettlementsAC>>(_context.Settlements.Include(p => p.Payee)
+                .Include(l => l.Payer).Where(s => s.GroupId == id).ToList());
+            //throw new NotImplementedException();
         }
 
         public IEnumerable<SettlementsAC> GetSettlementsByUserId(string id)
@@ -39,19 +50,17 @@ namespace Splitwise.Repository.SettlementRepository
             throw new NotImplementedException();
         }
 
-        public Task Save()
+        public async Task Save()
         {
-            throw new NotImplementedException();
+            await _context.SaveChangesAsync();
+            //throw new NotImplementedException();
         }
 
         public bool SettlementExists(int id)
         {
-            throw new NotImplementedException();
+            return _context.Settlements.Any(e => e.Id == id);
+            //throw new NotImplementedException();
         }
 
-        public void UpdateSettlement(Settlements Settlement)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

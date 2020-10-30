@@ -64,10 +64,5 @@ namespace Splitwise.Repository.GroupMemberRepository
 
             throw new NotImplementedException();
         }
-
-        public IEnumerable<GroupMemberAC> GetGroupMemberMappings()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

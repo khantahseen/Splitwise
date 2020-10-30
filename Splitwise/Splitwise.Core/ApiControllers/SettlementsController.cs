@@ -83,40 +83,7 @@ namespace Splitwise.Core.ApiControllers
             return Ok(settlements);
         }
 
-        // PUT: api/Settlements/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutSettlements([FromRoute] int id, [FromBody] Settlements settlements)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != settlements.Id)
-            {
-                return BadRequest();
-            }
-
-            _settlementsRepository.UpdateSettlement(settlements);
-
-            try
-            {
-                await _settlementsRepository.Save();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!SettlementsExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
+     
 
         // POST: api/Settlements
         [HttpPost]
@@ -131,27 +98,6 @@ namespace Splitwise.Core.ApiControllers
             await _settlementsRepository.Save();
 
             return CreatedAtAction("GetSettlements", new { id = settlements.Id }, settlements);
-        }
-
-        // DELETE: api/Settlements/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteSettlements([FromRoute] int id)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            var settlements = await _settlementsRepository.GetSettlement(id);
-            if (settlements == null)
-            {
-                return NotFound();
-            }
-
-            await _settlementsRepository.DeleteSettlement(settlements);
-            await _settlementsRepository.Save();
-
-            return Ok(settlements);
         }
 
         private bool SettlementsExists(int id)

@@ -14,8 +14,6 @@ namespace Splitwise.Repository.SettlementRepository
         IEnumerable<SettlementsAC> GetSettlementsByGroupId(int id);
         Task<SettlementsAC> GetSettlement(int id);
         void CreateSettlement(Settlements Settlement);
-        void UpdateSettlement(Settlements Settlement);
-        Task DeleteSettlement(SettlementsAC Settlement);
         bool SettlementExists(int id);
         Task Save();
     }

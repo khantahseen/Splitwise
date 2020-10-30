@@ -47,6 +47,25 @@ namespace Splitwise.Core.ApiControllers
             return Ok(expenses);
         }
 
+        // GET: api/Expenses/ByGroupId/id
+        [HttpGet("ByGroupId/{id}")]
+        public IActionResult GetExpensesByGroupId([FromRoute] int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var expenses = _expensesRepository.GetExpensesByGroupId(id);
+
+            if (expenses == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(expenses);
+        }
+
         // PUT: api/Expenses/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutExpenses([FromRoute] int id, [FromBody] Expenses expenses)

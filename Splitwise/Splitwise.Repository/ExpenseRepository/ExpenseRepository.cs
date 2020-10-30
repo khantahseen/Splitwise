@@ -58,5 +58,11 @@ namespace Splitwise.Repository.ExpenseRepository
         {
             throw new NotImplementedException();
         }
+
+        public IEnumerable<ExpensesAC> GetExpensesByGroupId(int id)
+        {
+            return _mapper.Map<IEnumerable<ExpensesAC>>(_context.Expenses.Where(i => i.GroupId == id));
+            //throw new NotImplementedException();
+        }
     }
 }
