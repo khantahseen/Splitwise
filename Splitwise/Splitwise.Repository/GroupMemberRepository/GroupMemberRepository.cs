@@ -28,21 +28,18 @@ namespace Splitwise.Repository.GroupMemberRepository
         public void CreateGroupMember(GroupMember GroupMember)
         {
             _context.Add(GroupMember);
-            //throw new NotImplementedException();
         }
 
         public IEnumerable<GroupMemberAC> GetGroupMembers()
         {
             return _mapper.Map<IEnumerable<GroupMemberAC>>(_context.GroupMember.Include(u => u.User).Include(g => g.Group));
-            //throw new NotImplementedException();
         }
+        
         public IEnumerable<GroupMemberAC> GetGroupMembers(int id)
         {
-
             return _mapper.Map<IEnumerable<GroupMemberAC>>( _context.GroupMember.Include(u => u.User).Where(i => i.GroupId == id));
-            //throw new NotImplementedException();
-           
         }
+        
         public bool GroupMemberExists(int id)
         {
             return _context.GroupMember.Any(e => e.Id == id);
@@ -51,7 +48,6 @@ namespace Splitwise.Repository.GroupMemberRepository
         public async Task Save()
         {
             await _context.SaveChangesAsync();
-            //throw new NotImplementedException();
         }
 
         public Task DeleteGroupMember(GroupMemberAC GroupMember)
@@ -61,7 +57,6 @@ namespace Splitwise.Repository.GroupMemberRepository
 
         public Task DeleteGroupMemberByGroupId(int id)
         {
-
             throw new NotImplementedException();
         }
     }

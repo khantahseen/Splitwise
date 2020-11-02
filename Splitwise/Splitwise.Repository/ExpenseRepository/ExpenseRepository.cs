@@ -23,46 +23,59 @@ namespace Splitwise.Repository.ExpenseRepository
         public void CreateExpense(Expenses Expense)
         {
             _context.Add(Expense);
-            //throw new NotImplementedException();
         }
 
-        public Task DeleteExpense(ExpensesAC Expense)
+        public IEnumerable<ExpensesAC> GetExpenses()
         {
-            throw new NotImplementedException();
-        }
-
-        public Task DeleteExpensesByGroupId(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool ExpenseExists(int id)
-        {
-            return _context.Expenses.Any(e => e.Id == id);
-            // throw new NotImplementedException();
-        }
-
-        public async Task<ExpensesAC> GetExpense(int id)
-        {
-
-            return _mapper.Map<ExpensesAC>(await _context.FindAsync<Expenses>(id));
-            // throw new NotImplementedException();
-        }
-        public async Task Save()
-        {
-            await _context.SaveChangesAsync();
-            //throw new NotImplementedException();
-        }
-
-        public void UpdateExpense(Expenses Expense)
-        {
-            throw new NotImplementedException();
+            return _mapper.Map<IEnumerable<ExpensesAC>>(_context.Expenses);
         }
 
         public IEnumerable<ExpensesAC> GetExpensesByGroupId(int id)
         {
             return _mapper.Map<IEnumerable<ExpensesAC>>(_context.Expenses.Where(i => i.GroupId == id));
-            //throw new NotImplementedException();
         }
+        public async Task DeleteExpense(int id)
+        {
+            //expense
+            var expenseDel = _context.Expenses.Find(id);
+            _context.Expenses.Remove(expenseDel);
+
+            //payers
+            IEnumerable<Payers> payer = _context.Payers.Where(p => p.ExpenseId == id);
+            _context.Payers.RemoveRange(payer);
+
+            //payees
+            IEnumerable<Payees> payee = _context.Payees.Where(pa => pa.ExpenseId == id);
+            _context.Payees.RemoveRange(payee);
+            await Save();
+         }
+
+
+        public bool ExpenseExists(int id)
+        {
+            return _context.Expenses.Any(e => e.Id == id);
+        }
+
+        public async Task<ExpensesAC> GetExpense(int id)
+        {
+            return _mapper.Map<ExpensesAC>(await _context.FindAsync<Expenses>(id));
+        }
+        public async Task Save()
+        {
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task UpdateExpense(Expenses Expense)
+        {
+            var expense = _context.Expenses.Where(e => e.Id == Expense.Id).FirstOrDefault();
+            expense.Description = Expense.Description;
+            expense.Currency = Expense.Currency;
+            expense.Total = Expense.Total;
+            expense.SplitBy = Expense.SplitBy;
+            _context.Expenses.Update(expense);
+            await _context.SaveChangesAsync();
+        }
+
+      
     }
 }

@@ -20,63 +20,80 @@ namespace Splitwise.Repository.GroupRepository
         private readonly IGroupMemberRepository _groupMemberRepository;
       
 
-        public GroupsRepository(SplitwiseDbContext _context, IMapper _mapper)
+        public GroupsRepository(SplitwiseDbContext _context, IMapper _mapper, IGroupMemberRepository _groupMemberRepository)
         {
             this._context = _context;
             this._mapper = _mapper;
+            this._groupMemberRepository = _groupMemberRepository;
         }
 
-        public GroupsRepository()
-        {
-        }
-
+       
         public void CreateGroup(Groups Group)
         {
             _context.Add(Group);
-            //throw new NotImplementedException();
         }
 
         public IEnumerable<GroupsAC> GetGroups()
         {
             return _mapper.Map<IEnumerable<GroupsAC>>(_context.Groups);
-            //throw new NotImplementedException();
         }
 
         public async Task<GroupsAC> GetGroup(int id)
         {
             return _mapper.Map<GroupsAC>(await _context.Groups.Include(u => u.User).FirstOrDefaultAsync(i => i.Id == id));
-            //throw new NotImplementedException();
         }
 
         public bool GroupExists(int id)
         {
             return _context.Groups.Any(e => e.Id == id);
-            //throw new NotImplementedException();
         }
 
         public async Task Save()
         {
             await _context.SaveChangesAsync();
-            //throw new NotImplementedException();
         }
         public IEnumerable<GroupsAC> GetGroupsByUserId(string id)
         {
             return _mapper.Map<IEnumerable<GroupsAC>>(_groupMemberRepository.GetGroupMembers().Where(g => g.MemberId == id).Select(k => k.Group).ToList());
-            //throw new NotImplementedException();
         }
         
-        public Task DeleteGroup(GroupsAC Group)
+        public async Task DeleteGroup(int id)
         {
-            throw new NotImplementedException();
+            //group
+            var groups = _context.Groups.Find(id);
+            _context.Groups.Remove(groups);
+            //members of group
+            IEnumerable<GroupMember> members = _context.GroupMember.Where(m => m.GroupId == id);
+            _context.GroupMember.RemoveRange(members);
+            //settlements
+            IEnumerable<Settlements> settlements = _context.Settlements.Where(m => m.GroupId == id);
+            _context.GroupMember.RemoveRange(members);
+            //expenses
+            IEnumerable<Expenses> expense = _context.Expenses.Where(e => e.GroupId == id);
+            _context.Expenses.RemoveRange(expense);
+
+            //payers and payees
+            foreach (var item in expense)
+            {
+                IEnumerable<Payers> payer = _context.Payers.Where(p => p.ExpenseId == item.Id);
+                _context.Payers.RemoveRange(payer);
+
+                IEnumerable<Payees> payee = _context.Payees.Where(pa => pa.ExpenseId == item.Id);
+                _context.Payees.RemoveRange(payee);
+            }
+           await Save();
         }
 
         public Task GetGroupWithDetails(int id)
         {
             throw new NotImplementedException();
         }
-        public void UpdateGroup(Groups Group)
+        public async Task UpdateGroup(Groups Group)
         {
-            throw new NotImplementedException();
+            var group = this._context.Groups.Where(e => e.Id == Group.Id).FirstOrDefault();
+            group.Name = Group.Name;
+            this._context.Groups.Update(group);
+            await _context.SaveChangesAsync();
         }
     }
 }

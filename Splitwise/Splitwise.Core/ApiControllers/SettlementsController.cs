@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 
 namespace Splitwise.Core.ApiControllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class SettlementsController:ControllerBase
     {
         private readonly ISettlementRepository _settlementsRepository;
@@ -64,28 +66,7 @@ namespace Splitwise.Core.ApiControllers
             return Ok(settlements);
         }
 
-        // GET: api/Settlements/5
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetSettlements([FromRoute] int id)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            var settlements = await _settlementsRepository.GetSettlement(id);
-
-            if (settlements == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(settlements);
-        }
-
-     
-
-        // POST: api/Settlements
+        //POST: api/Settlements
         [HttpPost]
         public async Task<IActionResult> PostSettlements([FromBody] Settlements settlements)
         {
@@ -97,7 +78,7 @@ namespace Splitwise.Core.ApiControllers
             _settlementsRepository.CreateSettlement(settlements);
             await _settlementsRepository.Save();
 
-            return CreatedAtAction("GetSettlements", new { id = settlements.Id }, settlements);
+            return Ok();
         }
 
         private bool SettlementsExists(int id)

@@ -119,11 +119,11 @@ namespace Splitwise.Repository.UserRepository
             //throw new NotImplementedException();
         }
         
-       // public Task Save()
-       // {
-             //_context.SaveChanges();
+        public async Task Save()
+        {
+             await _context.SaveChangesAsync();
             //throw new NotImplementedException();
-        //}
+        }
 
        
         public bool UserExists(string id)

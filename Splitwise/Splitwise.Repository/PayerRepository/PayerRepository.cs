@@ -25,36 +25,30 @@ namespace Splitwise.Repository.PayerRepository
         public void CreatePayer(Payers Payer)
         {
             _context.Add(Payer);
-            //throw new NotImplementedException();
         }
         public IEnumerable<PayersAC> GetPayers()
         {
             return _mapper.Map<IEnumerable<PayersAC>>(_context.Payers.Include(t => t.User));
-            //throw new NotImplementedException();
         }
 
         public IEnumerable<PayersAC> GetPayersByExpenseId(int id)
         {
             return _mapper.Map<IEnumerable<PayersAC>>(_context.Payers.Include(t => t.User).Where(e => e.ExpenseId == id).ToList());
-            //throw new NotImplementedException();
         }
 
         public IEnumerable<PayersAC> GetPayersByPayerId(string id)
         {
             return _mapper.Map<IEnumerable<PayersAC>>(_context.Payers.Include(t => t.User).Where(e => e.PayerId == id).ToList());
-            //throw new NotImplementedException();
         }
 
         public bool PayerExists(int id)
         {
             return _context.Payers.Any(e => e.Id == id);
-            //throw new NotImplementedException();
         }
 
         public async Task Save()
         {
             await _context.SaveChangesAsync();
-            //throw new NotImplementedException();
         }
 
         public Task DeletePayer(PayersAC Payer)
@@ -62,11 +56,9 @@ namespace Splitwise.Repository.PayerRepository
             throw new NotImplementedException();
         }
 
-        public Task<PayersAC> GetPayer(int id)
+        public async Task<PayersAC> GetPayer(int id)
         {
-            throw new NotImplementedException();
+            return _mapper.Map<PayersAC>(await _context.Payers.FindAsync(id));
         }
-
-
     }
 }

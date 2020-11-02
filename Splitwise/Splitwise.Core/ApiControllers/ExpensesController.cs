@@ -21,12 +21,12 @@ namespace Splitwise.Core.ApiControllers
             this._expensesRepository = expensesRepository;
         }
 
-        // GET: api/Expenses
-       // [HttpGet]
-        //public IEnumerable<ExpensesAC> GetExpenses()
-        //{
-          //  return _expensesRepository.GetExpenses();
-        //}
+        //GET: api/Expenses
+        [HttpGet]
+        public IEnumerable<ExpensesAC> GetExpenses()
+        {
+          return _expensesRepository.GetExpenses();
+        }
 
         // GET: api/Expenses/5
         [HttpGet("{id}")]
@@ -70,23 +70,13 @@ namespace Splitwise.Core.ApiControllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutExpenses([FromRoute] int id, [FromBody] Expenses expenses)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != expenses.Id)
-            {
-                return BadRequest();
-            }
-
-            _expensesRepository.UpdateExpense(expenses);
-
             try
             {
-                await _expensesRepository.Save();
+                expenses.Id = id;
+                await this._expensesRepository.UpdateExpense(expenses);
+
             }
-            catch (DbUpdateConcurrencyException)
+            catch (Exception)
             {
                 if (!ExpensesExists(id))
                 {
@@ -98,7 +88,7 @@ namespace Splitwise.Core.ApiControllers
                 }
             }
 
-            return NoContent();
+            return Ok(expenses);
         }
 
         // POST: api/Expenses
@@ -114,29 +104,22 @@ namespace Splitwise.Core.ApiControllers
             await _expensesRepository.Save();
 
             return Ok();
-                //CreatedAtAction("GetExpenses", new { id = expenses.Id }, expenses);
+            //CreatedAtAction("GetExpenses", new { id = expenses.Id }, expenses);
         }
 
         // DELETE: api/Expenses/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteExpenses([FromRoute] int id)
         {
-            if (!ModelState.IsValid)
+            if (this.ExpensesExists(id))
             {
-                return BadRequest(ModelState);
+                await _expensesRepository.DeleteExpense(id);
+                return Ok(id);
             }
-
-            var expenses = await _expensesRepository.GetExpense(id);
-            if (expenses == null)
-            {
-                return NotFound();
-            }
-
-            await _expensesRepository.DeleteExpense(expenses);
-            await _expensesRepository.Save();
-
-            return Ok(expenses);
+            return NotFound();
         }
+
+        
 
         private bool ExpensesExists(int id)
         {

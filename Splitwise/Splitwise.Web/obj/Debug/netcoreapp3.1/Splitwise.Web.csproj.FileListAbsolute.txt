@@ -105,6 +105,13 @@ C:\Users\asus\Documents\GitHub\Splitwise\SplitWise\Splitwise.Web\bin\Debug\netco
 C:\Users\asus\Documents\GitHub\Splitwise\SplitWise\Splitwise.Web\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
 C:\Users\asus\Documents\GitHub\Splitwise\SplitWise\Splitwise.Web\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\Users\asus\Documents\GitHub\Splitwise\SplitWise\Splitwise.Web\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+C:\Users\asus\Documents\GitHub\Splitwise\SplitWise\Splitwise.Web\bin\Debug\netcoreapp3.1\Namotion.Reflection.dll
+C:\Users\asus\Documents\GitHub\Splitwise\SplitWise\Splitwise.Web\bin\Debug\netcoreapp3.1\NJsonSchema.dll
+C:\Users\asus\Documents\GitHub\Splitwise\SplitWise\Splitwise.Web\bin\Debug\netcoreapp3.1\NSwag.Annotations.dll
+C:\Users\asus\Documents\GitHub\Splitwise\SplitWise\Splitwise.Web\bin\Debug\netcoreapp3.1\NSwag.AspNetCore.dll
+C:\Users\asus\Documents\GitHub\Splitwise\SplitWise\Splitwise.Web\bin\Debug\netcoreapp3.1\NSwag.Core.dll
+C:\Users\asus\Documents\GitHub\Splitwise\SplitWise\Splitwise.Web\bin\Debug\netcoreapp3.1\NSwag.Generation.dll
+C:\Users\asus\Documents\GitHub\Splitwise\SplitWise\Splitwise.Web\bin\Debug\netcoreapp3.1\NSwag.Generation.AspNetCore.dll
 C:\Users\asus\Documents\GitHub\Splitwise\SplitWise\Splitwise.Web\obj\Debug\netcoreapp3.1\Splitwise.Web.csproj.CoreCompileInputs.cache
 C:\Users\asus\Documents\GitHub\Splitwise\SplitWise\Splitwise.Web\obj\Debug\netcoreapp3.1\Splitwise.Web.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\asus\Documents\GitHub\Splitwise\SplitWise\Splitwise.Web\obj\Debug\netcoreapp3.1\Splitwise.Web.MvcApplicationPartsAssemblyInfo.cache

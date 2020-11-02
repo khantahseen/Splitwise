@@ -58,25 +58,15 @@ namespace Splitwise.Core.ApiControllers
 
         // PUT: api/Groups/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutGroups([FromRoute] int id, [FromBody] Groups groups)
+        public async Task<IActionResult> PutGroups([FromRoute] int id, [FromBody] Groups group)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != groups.Id)
-            {
-                return BadRequest();
-            }
-
-            _groupRepository.UpdateGroup(groups);
-
             try
             {
-                await _groupRepository.Save();
+                group.Id = id;
+                await this._groupRepository.UpdateGroup(group);
+
             }
-            catch (DbUpdateConcurrencyException)
+            catch (Exception)
             {
                 if (!GroupsExists(id))
                 {
@@ -88,7 +78,7 @@ namespace Splitwise.Core.ApiControllers
                 }
             }
 
-            return NoContent();
+            return Ok(group);
         }
 
         // POST: api/Groups
@@ -111,21 +101,12 @@ namespace Splitwise.Core.ApiControllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteGroups([FromRoute] int id)
         {
-            if (!ModelState.IsValid)
+            if (this.GroupsExists(id))
             {
-                return BadRequest(ModelState);
+                await _groupRepository.DeleteGroup(id);
+                return Ok(id);
             }
-
-            var groups = await _groupRepository.GetGroup(id);
-            if (groups == null)
-            {
-                return NotFound();
-            }
-
-            await _groupRepository.DeleteGroup(groups);
-            await _groupRepository.Save();
-
-            return Ok(groups);
+            return NotFound();
         }
 
         private bool GroupsExists(int id)

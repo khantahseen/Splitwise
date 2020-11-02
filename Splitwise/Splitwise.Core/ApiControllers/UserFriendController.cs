@@ -5,6 +5,8 @@ using System.Text;
 
 namespace Splitwise.Core.ApiControllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     class UserFriendController:ControllerBase
     {
     }

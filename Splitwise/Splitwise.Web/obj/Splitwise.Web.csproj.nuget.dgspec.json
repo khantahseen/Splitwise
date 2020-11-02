@@ -354,6 +354,10 @@
               "target": "Package",
               "version": "[3.1.9, )"
             },
+            "NSwag.AspNetCore": {
+              "target": "Package",
+              "version": "[13.8.2, )"
+            },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[12.0.3, )"
