@@ -27,6 +27,7 @@ using Splitwise.Repository.ExpenseRepository;
 using Splitwise.Repository.PayeeRepository;
 using Splitwise.Repository.PayerRepository;
 using Splitwise.Repository.SettlementRepository;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 
 namespace Splitwise.Web
 {
@@ -100,6 +101,7 @@ namespace Splitwise.Web
             {
                 config.CreateMap<Users, UsersAC>();
                 config.CreateMap<Groups, GroupsAC>();
+                config.CreateMap<GroupsAC, Groups>();
                 config.CreateMap<GroupMember, GroupMemberAC>();
                 config.CreateMap<UserFriend, UserFriendAC>();
                 config.CreateMap<Expenses, ExpensesAC>();
@@ -111,6 +113,17 @@ namespace Splitwise.Web
             services.AddSingleton(mapper);
 
             services.AddSwaggerDocument();
+
+            var corsBuilder = new CorsPolicyBuilder();
+            //corsBuilder.AllowAnyOrigin(); // For anyone access.
+            corsBuilder.WithOrigins(new[] { "http://localhost:4200" }); // for a specific url. Don't add a forward slash on the end!
+            corsBuilder.AllowAnyHeader();
+            corsBuilder.AllowCredentials();
+            corsBuilder.AllowAnyMethod();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("SiteCorsPolicy", corsBuilder.Build());
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -120,6 +133,7 @@ namespace Splitwise.Web
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseCors("SiteCorsPolicy");
             app.UseOpenApi();
             app.UseSwaggerUi3();
             app.UseRouting();

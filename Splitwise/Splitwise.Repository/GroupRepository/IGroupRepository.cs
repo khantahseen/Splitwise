@@ -10,12 +10,12 @@ namespace Splitwise.Repository.GroupRepository
     public interface IGroupRepository
     {
         IEnumerable<GroupsAC> GetGroups();
-        IEnumerable<GroupsAC> GetGroupsByUserId(string id);
+        Task<IEnumerable<GroupsAC>> GetGroupsByUserId(string id);
         Task<GroupsAC> GetGroup(int id);
 
         //To be included later
         //Task<GroupAndMembersAC> GetGroupWithDetails(int id);
-        void CreateGroup(Groups Group);
+        Task CreateGroup(Groups Group);
         Task UpdateGroup(Groups Group);
         Task DeleteGroup(int id);
         bool GroupExists(int id);

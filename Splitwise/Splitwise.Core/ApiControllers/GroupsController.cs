@@ -30,7 +30,7 @@ namespace Splitwise.Core.ApiControllers
 
         // GET: api/Groups/2
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetGroupById([FromRoute] int id)
+        public async Task<ActionResult<GroupsAC>> GetGroupById([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
@@ -44,16 +44,18 @@ namespace Splitwise.Core.ApiControllers
 
         // GET: api/Groups/ByUserId
         [HttpGet("ByUserId/{id}")]
-        public IActionResult GetGroupsByUserId([FromRoute] string id)
+        public async Task<ActionResult<IEnumerable<GroupsAC>>> GetGroupsByUserId([FromRoute] string id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var groups = _groupRepository.GetGroupsByUserId(id);
+            var groups = await _groupRepository.GetGroupsByUserId(id);
 
             return Ok(groups);
+            //return await _groupRepository.GetGroupsByUserId(id);
+            //return null;
         }
 
         // PUT: api/Groups/5
@@ -90,8 +92,8 @@ namespace Splitwise.Core.ApiControllers
                 return BadRequest(ModelState);
             }
 
-            _groupRepository.CreateGroup(groups);
-            await _groupRepository.Save();
+            await _groupRepository.CreateGroup(groups);
+            //await _groupRepository.Save();
             return Ok();
 
             //return CreatedAtAction("GetGroups", new { id = groups.Id }, groups);

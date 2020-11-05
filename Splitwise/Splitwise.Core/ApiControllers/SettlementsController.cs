@@ -30,7 +30,7 @@ namespace Splitwise.Core.ApiControllers
 
         // GET: api/Settlements/GetByUserId
         [HttpGet("GetByUserId/{id}")]
-        public IActionResult GetSettlementsByUserId([FromRoute] string id)
+        public ActionResult<IEnumerable<SettlementsAC>> GetSettlementsByUserId([FromRoute] string id)
         {
             if (!ModelState.IsValid)
             {
@@ -49,7 +49,7 @@ namespace Splitwise.Core.ApiControllers
 
         // GET: api/Settlements/GetByGroupId
         [HttpGet("GetByGroupId/{id}")]
-        public IActionResult GetSettlementsByGroupId([FromRoute] int id)
+        public ActionResult<IEnumerable<SettlementsAC>> GetSettlementsByGroupId([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {

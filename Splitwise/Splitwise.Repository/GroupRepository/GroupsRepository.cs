@@ -28,9 +28,18 @@ namespace Splitwise.Repository.GroupRepository
         }
 
        
-        public void CreateGroup(Groups Group)
+        public async Task CreateGroup(Groups Group)
         {
             _context.Add(Group);
+            await _context.SaveChangesAsync();
+            var groupName = Group.Name;
+            var adminID = Group.AdminId;
+            var groupID = this.GetGroups().Where(i => i.Name == groupName).Select(g => g.Id).FirstOrDefault();
+            GroupMember gm = new GroupMember();
+            gm.GroupId = groupID;
+            gm.MemberId = adminID;
+            this._groupMemberRepository.CreateGroupMember(gm);
+            await _context.SaveChangesAsync();
         }
 
         public IEnumerable<GroupsAC> GetGroups()
@@ -52,9 +61,9 @@ namespace Splitwise.Repository.GroupRepository
         {
             await _context.SaveChangesAsync();
         }
-        public IEnumerable<GroupsAC> GetGroupsByUserId(string id)
+        public async Task<IEnumerable<GroupsAC>> GetGroupsByUserId(string id)
         {
-            return _mapper.Map<IEnumerable<GroupsAC>>(_groupMemberRepository.GetGroupMembers().Where(g => g.MemberId == id).Select(k => k.Group).ToList());
+            return _mapper.Map<IEnumerable<GroupsAC>>( this._groupMemberRepository.GetGroupMembers().Where(g => g.MemberId == id).Select(k => k.Group).ToList());
         }
         
         public async Task DeleteGroup(int id)

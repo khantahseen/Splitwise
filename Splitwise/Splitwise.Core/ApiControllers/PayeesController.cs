@@ -31,7 +31,7 @@ namespace Splitwise.Core.ApiControllers
 
         // GET: api/Payees/ByExpenseId/id
         [HttpGet("ByExpenseId/{id}")]
-        public IActionResult GetPayeesByExpenseId([FromRoute] int id)
+        public ActionResult<IEnumerable<PayeesAC>> GetPayeesByExpenseId([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
@@ -50,7 +50,7 @@ namespace Splitwise.Core.ApiControllers
 
         // GET: api/Payees/ByExpenseId/id
         [HttpGet("ByPayeeId/{id}")]
-        public IActionResult GetPayeesByPayeeId([FromRoute] string id)
+        public ActionResult<IEnumerable<PayeesAC>> GetPayeesByPayeeId([FromRoute] string id)
         {
             if (!ModelState.IsValid)
             {

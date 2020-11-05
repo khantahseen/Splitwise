@@ -49,7 +49,7 @@ namespace Splitwise.Core.ApiControllers
 
         // GET: api/Expenses/ByGroupId/id
         [HttpGet("ByGroupId/{id}")]
-        public IActionResult GetExpensesByGroupId([FromRoute] int id)
+        public ActionResult<IEnumerable<ExpensesAC>> GetExpensesByGroupId([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {

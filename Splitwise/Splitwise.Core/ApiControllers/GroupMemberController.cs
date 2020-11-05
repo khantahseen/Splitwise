@@ -24,7 +24,7 @@ namespace Splitwise.Core.ApiControllers
         
         // GET: api/GroupMember/5
         [HttpGet("{id}")]
-        public IActionResult GetGroupMember([FromRoute] int id)
+        public ActionResult<IEnumerable<GroupMemberAC>> GetGroupMember([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
