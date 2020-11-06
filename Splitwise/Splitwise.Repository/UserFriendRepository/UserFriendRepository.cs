@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Splitwise.DomainModel;
 using Splitwise.DomainModel.ApplicationClasses;
 using Splitwise.DomainModel.Models;
@@ -23,46 +24,61 @@ namespace Splitwise.Repository.UserFriendRepository
             this._context = _context;
             this._usersRepository = _usersRepository;
             this._mapper = _mapper;
-            
+
         }
-        public async Task<UsersAC> CreateUserFriendByEmail(string id, Users user)
+
+        public async Task<IEnumerable<UsersAC>> GetAllFriends(string userId)
         {
-            string email = user.Email;
-            var x = await _usersRepository.GetUserByEmail(email);
-            if (x != null)
+            var users = await this._context.UserFriend
+                .Where(p => p.UserId == userId)
+                .Include(p => p.Friend)
+                .Select(p => p.Friend).ToListAsync();
+            return this._mapper.Map<IEnumerable<UsersAC>>(users);
+            // return this._mapper.Map<IEnumerable<UsersAC>>(_context.UserFriend.Include(f=>f.Friend).Where(u=>u.UserId==userId).ToList());
+            //throw new NotImplementedException();
+            // return _mapper.Map<IEnumerable<PayersAC>>
+            //(_context.Payers.Include(t => t.User).Where(e => e.PayerId == id).ToList());
+        }
+
+        public async Task<UsersAC> CreateUserFriendByEmail(string userId, string userFriendEmail)
+        {
+            UserFriend friend = new UserFriend();
+            friend.Id = 0;
+            friend.UserId = userId;
+            var user = await _usersRepository.GetUserByEmail(userFriendEmail);
+            friend.FriendId = user.Id;
+            _context.UserFriend.Add(friend);
+            await _context.SaveChangesAsync();
+            return _mapper.Map<UsersAC>(user);
+            //throw new NotImplementedException();
+        }
+
+        public async Task<UserFriendAC> DeleteUserFriendById(string userId, string friendId)
+        {
+            try
             {
-                _context.UserFriend.Add(new UserFriend() { UserId = id, FriendId = x.Id });
-                _context.UserFriend.Add(new UserFriend() { UserId = x.Id, FriendId = id });
+                var friendToRemove = this._context.UserFriend.Where(e => (e.UserId == userId) && (e.FriendId == friendId)).FirstOrDefault();
+                this._context.Remove(friendToRemove);
                 await _context.SaveChangesAsync();
-                return x;
+                return this._mapper.Map<UserFriendAC>(friendToRemove);
             }
-            else
+            catch (Exception e)
             {
-                return _mapper.Map<UsersAC>(new Users());
+                return null;
             }
             //throw new NotImplementedException();
         }
 
-        public async Task<UserFriendAC> GetUserFriend(int id)
+        public bool FriendExistsByEmail(string userId, string userFriendEmail)
         {
-            return _mapper.Map<UserFriendAC>(await _context.FindAsync<UserFriend>(id));
+            return _context.UserFriend.Any(e => (e.UserId == userId) && (e.Friend.Email == userFriendEmail));
             //throw new NotImplementedException();
         }
 
-        public bool UserFriendExists(string id)
+        public bool FriendExistsById(string userId, string friendId)
         {
-            return _context.Users.Any(e => e.Id == id);
+            return _context.UserFriend.Any(e => (e.UserId == userId) && (e.FriendId == friendId));
             //throw new NotImplementedException();
-        }
-
-        public Task DeleteUserFriend(UserFriendAC UserFriend)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task DeleteUserFriendById(string userid1, string userid2)
-        {
-            throw new NotImplementedException();
         }
     }
 }

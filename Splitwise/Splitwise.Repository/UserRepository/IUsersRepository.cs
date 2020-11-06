@@ -19,6 +19,7 @@ namespace Splitwise.Repository.UserRepository
         Task<IdentityResult> UpdateUser(UsersAC user);
         Task DeleteUser(string id);
         bool UserExists(string id);
+        bool UserExistsByEmail(string userEmail);
         //Task Save();
     }
 }

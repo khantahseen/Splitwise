@@ -100,14 +100,21 @@ namespace Splitwise.Web
             var configuration = new AutoMapper.MapperConfiguration(config =>
             {
                 config.CreateMap<Users, UsersAC>();
+                config.CreateMap<UsersAC, Users>();
                 config.CreateMap<Groups, GroupsAC>();
                 config.CreateMap<GroupsAC, Groups>();
                 config.CreateMap<GroupMember, GroupMemberAC>();
+                config.CreateMap<GroupMemberAC, GroupMember>();
                 config.CreateMap<UserFriend, UserFriendAC>();
+                config.CreateMap<UserFriendAC, UserFriend>();
                 config.CreateMap<Expenses, ExpensesAC>();
+                config.CreateMap<ExpensesAC, Expenses>();
                 config.CreateMap<Payers, PayersAC>();
+                config.CreateMap<PayersAC, Payers>();
                 config.CreateMap<Payees, PayeesAC>();
+                config.CreateMap<PayeesAC, Payees>();
                 config.CreateMap<Settlements, SettlementsAC>();
+                config.CreateMap<SettlementsAC, Settlements>();
             });
             IMapper mapper = configuration.CreateMapper();
             services.AddSingleton(mapper);

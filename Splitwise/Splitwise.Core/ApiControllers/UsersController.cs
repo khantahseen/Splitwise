@@ -66,7 +66,7 @@ namespace Splitwise.Core.ApiControllers
 
         // GET: api/Users/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetUser([FromRoute] string id)
+        public async Task<ActionResult<UsersAC>> GetUser([FromRoute] string id)
         {
             if (!ModelState.IsValid)
             {
@@ -85,7 +85,7 @@ namespace Splitwise.Core.ApiControllers
 
         // GET: api/Users/ByEmail/abc@gmail.com
         [HttpGet("ByEmail/{email}")]
-        public async Task<IActionResult> GetUserByEmail([FromRoute] string email)
+        public async Task<ActionResult<UsersAC>> GetUserByEmail([FromRoute] string email)
         {
             if (!ModelState.IsValid)
             {

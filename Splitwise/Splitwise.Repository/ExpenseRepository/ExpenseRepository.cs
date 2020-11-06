@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using Splitwise.DomainModel;
 using Splitwise.DomainModel.ApplicationClasses;
 using Splitwise.DomainModel.Models;
@@ -32,7 +33,7 @@ namespace Splitwise.Repository.ExpenseRepository
 
         public IEnumerable<ExpensesAC> GetExpensesByGroupId(int id)
         {
-            return _mapper.Map<IEnumerable<ExpensesAC>>(_context.Expenses.Where(i => i.GroupId == id));
+            return _mapper.Map<IEnumerable<ExpensesAC>>(_context.Expenses.Include(u=>u.User).Where(i => i.GroupId == id).ToList());
         }
         public async Task DeleteExpense(int id)
         {
@@ -58,7 +59,7 @@ namespace Splitwise.Repository.ExpenseRepository
 
         public async Task<ExpensesAC> GetExpense(int id)
         {
-            return _mapper.Map<ExpensesAC>(await _context.FindAsync<Expenses>(id));
+            return _mapper.Map<ExpensesAC>(await _context.Expenses.Where(e=>e.Id==id).Include(u=>u.User).SingleOrDefaultAsync());
         }
         public async Task Save()
         {

@@ -30,7 +30,7 @@ namespace Splitwise.Core.ApiControllers
 
         // GET: api/Payers/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetPayers([FromRoute] int id)
+        public async Task<ActionResult<PayersAC>> GetPayers([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {

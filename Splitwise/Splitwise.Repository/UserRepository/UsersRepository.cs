@@ -141,5 +141,11 @@ namespace Splitwise.Repository.UserRepository
             }
             //throw new NotImplementedException();
         }
+
+        public bool UserExistsByEmail(string userEmail)
+        {
+            return this._userManager.Users.Any(e => e.Email == userEmail);
+            //throw new NotImplementedException();
+        }
     }
 }
