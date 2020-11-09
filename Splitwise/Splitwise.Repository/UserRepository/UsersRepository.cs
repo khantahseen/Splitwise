@@ -48,7 +48,7 @@ namespace Splitwise.Repository.UserRepository
             return null;
         }
 
-        public async Task<string> Login(LoginAC login)
+        public async Task<TokenAC> Login(LoginAC login)
         {
             var user = await _userManager.FindByNameAsync(login.Email);
             if (user != null && await _userManager.CheckPasswordAsync(user, login.Password))
@@ -58,6 +58,8 @@ namespace Splitwise.Repository.UserRepository
                 var authClaims = new List<Claim>
                 {
                     new Claim("name", user.UserName),
+                    new Claim("userid", user.Id),
+                    new Claim("userfullname", user.Name),
                     new Claim(ClaimTypes.Name, user.UserName),
                     new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 };
@@ -77,8 +79,9 @@ namespace Splitwise.Repository.UserRepository
                     claims: authClaims,
                     signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256)
                     );
-
-                var returntoken = new JwtSecurityTokenHandler().WriteToken(token);
+                var returntoken = new TokenAC();
+                returntoken.Token = new JwtSecurityTokenHandler().WriteToken(token);
+                
                 return returntoken;
             }
             return null;

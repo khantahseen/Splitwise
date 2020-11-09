@@ -11,7 +11,7 @@ namespace Splitwise.Repository.UserRepository
     public interface IUsersRepository
     {
         Task<IdentityResult> Register(Register register);
-        Task<string> Login(LoginAC login);
+        Task<TokenAC> Login(LoginAC login);
         IEnumerable<UsersAC> GetUsers();
         IEnumerable<UsersAC> GetAllFriends(string id);
         Task<UsersAC> GetUser(string id);

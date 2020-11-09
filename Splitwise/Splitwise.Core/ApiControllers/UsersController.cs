@@ -44,7 +44,7 @@ namespace Splitwise.Core.ApiControllers
 
         [HttpPost]
         [Route("login")]
-        public async Task<IActionResult> Login([FromBody] LoginAC login)
+        public async Task<ActionResult<TokenAC>> Login([FromBody] LoginAC login)
         {
             var loginReturnModel = await _usersRepository.Login(login);
             if (loginReturnModel != null)

@@ -85,18 +85,18 @@ namespace Splitwise.Core.ApiControllers
 
         // POST: api/Groups
         [HttpPost]
-        public async Task<IActionResult> PostGroups([FromBody] Groups groups)
+        public async Task<ActionResult<int>> PostGroups([FromBody] Groups groups)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            await _groupRepository.CreateGroup(groups);
+            var gid= await _groupRepository.CreateGroup(groups);
             //await _groupRepository.Save();
-            return Ok();
-
-            //return CreatedAtAction("GetGroups", new { id = groups.Id }, groups);
+            return Ok(gid);
+            
+            //return CreatedAtAction("GetGroupById", new { id = groups.Id }, groups);
         }
 
         // DELETE: api/Groups/5

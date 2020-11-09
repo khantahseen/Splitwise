@@ -28,7 +28,7 @@ namespace Splitwise.Repository.GroupRepository
         }
 
        
-        public async Task CreateGroup(Groups Group)
+        public async Task<int> CreateGroup(Groups Group)
         {
             _context.Add(Group);
             await _context.SaveChangesAsync();
@@ -40,6 +40,7 @@ namespace Splitwise.Repository.GroupRepository
             gm.MemberId = adminID;
             this._groupMemberRepository.CreateGroupMember(gm);
             await _context.SaveChangesAsync();
+            return groupID;
         }
 
         public IEnumerable<GroupsAC> GetGroups()

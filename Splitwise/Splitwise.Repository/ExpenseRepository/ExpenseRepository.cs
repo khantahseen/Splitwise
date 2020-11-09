@@ -33,7 +33,7 @@ namespace Splitwise.Repository.ExpenseRepository
 
         public IEnumerable<ExpensesAC> GetExpensesByGroupId(int id)
         {
-            return _mapper.Map<IEnumerable<ExpensesAC>>(_context.Expenses.Include(u=>u.User).Where(i => i.GroupId == id).ToList());
+            return _mapper.Map<IEnumerable<ExpensesAC>>(_context.Expenses.Include(u=>u.User).Include(g=>g.Group).Where(i => i.GroupId == id).ToList());
         }
         public async Task DeleteExpense(int id)
         {
