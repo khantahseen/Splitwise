@@ -12,7 +12,7 @@ namespace Splitwise.Repository.ExpenseRepository
         IEnumerable<ExpensesAC> GetExpenses();
         Task<ExpensesAC> GetExpense(int id);
         IEnumerable<ExpensesAC> GetExpensesByGroupId(int id);
-        void CreateExpense(Expenses Expense);
+        Task<Expenses> CreateExpense(Expenses Expense);
         Task UpdateExpense(Expenses Expense);
         Task DeleteExpense(int id);
         bool ExpenseExists(int id);

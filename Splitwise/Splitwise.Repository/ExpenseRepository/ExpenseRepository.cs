@@ -21,9 +21,13 @@ namespace Splitwise.Repository.ExpenseRepository
             this._mapper = _mapper;
             this._context = _context;
         }
-        public void CreateExpense(Expenses Expense)
+        public async Task<Expenses> CreateExpense(Expenses Expense)
         {
             _context.Add(Expense);
+            await _context.SaveChangesAsync();
+            var expensedescription = Expense.Description;
+            Expenses newExpense = this._context.Expenses.Where(e => e.Description == expensedescription).Select(e => e).FirstOrDefault();
+            return newExpense;
         }
 
         public IEnumerable<ExpensesAC> GetExpenses()

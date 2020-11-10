@@ -93,17 +93,17 @@ namespace Splitwise.Core.ApiControllers
 
         // POST: api/Expenses
         [HttpPost]
-        public async Task<IActionResult> PostExpenses([FromBody] Expenses expenses)
+        public async Task<ActionResult<Expenses>> PostExpenses([FromBody] Expenses expenses)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _expensesRepository.CreateExpense(expenses);
-            await _expensesRepository.Save();
+            var newexpense= await _expensesRepository.CreateExpense(expenses);
+            
 
-            return Ok();
+            return Ok(newexpense);
             //CreatedAtAction("GetExpenses", new { id = expenses.Id }, expenses);
         }
 
