@@ -12,6 +12,7 @@ namespace Splitwise.Repository.PayeeRepository
         IEnumerable<PayeesAC> GetPayees();
         IEnumerable<PayeesAC> GetPayeesByExpenseId(int id);
         IEnumerable<PayeesAC> GetPayeesByPayeeId(string id);
+        Task<IEnumerable<PayeesAC>> GetExpensesByPayeeId(string payeeId);
         void CreatePayee(Payees Payee);
         Task Save();
         bool PayeeExists(int id);
