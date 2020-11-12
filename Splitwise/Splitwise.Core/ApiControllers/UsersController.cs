@@ -16,17 +16,22 @@ namespace Splitwise.Core.ApiControllers
     [ApiController]
     public class UsersController:ControllerBase
     {
+        #region Private Variables
         private readonly IUsersRepository _usersRepository;
         private readonly UserManager<Users> _userManager;
         private readonly SplitwiseDbContext _context;
+        #endregion
 
+        #region Constructor
         public UsersController(IUsersRepository usersRepository, UserManager<Users> userManager, SplitwiseDbContext _context)
         {
             this._usersRepository = usersRepository;
             _userManager = userManager;
             this._context = _context;
         }
+        #endregion
 
+        #region Public Methods
         [HttpPost]
         [Route("register")]
         public async Task<IActionResult> Register(Register register)
@@ -125,10 +130,14 @@ namespace Splitwise.Core.ApiControllers
             }
             return NotFound();
         }
+        #endregion
+
+        #region Private Method
         private bool UsersExist(string id)
         {
             return _usersRepository.UserExists(id);
         }
+        #endregion
 
     }
 }

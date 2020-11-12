@@ -7,6 +7,7 @@ namespace Splitwise.DomainModel.Models
 {
     public class Payees
     {
+        #region Properties
         public int Id { get; set; }
 
         public int ExpenseId { get; set; }
@@ -19,5 +20,6 @@ namespace Splitwise.DomainModel.Models
 
         public int PayeeShare { get; set; }
         public int PayeeInitialShare { get; set; }
+        #endregion
     }
 }

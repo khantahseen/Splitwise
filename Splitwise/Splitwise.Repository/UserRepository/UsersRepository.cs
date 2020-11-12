@@ -18,12 +18,14 @@ namespace Splitwise.Repository.UserRepository
 {
     public class UsersRepository : IUsersRepository
     {
+        #region Private Variables
         private readonly UserManager<Users> _userManager;
         private readonly IConfiguration _configuration;
         private readonly IMapper _mapper;
         private readonly SplitwiseDbContext _context;
+        #endregion
 
-
+        #region Constructors
         public UsersRepository(SplitwiseDbContext _context,UserManager<Users> _userManager, IConfiguration _configuration, IMapper _mapper)
         {
             this._context = _context;
@@ -31,7 +33,9 @@ namespace Splitwise.Repository.UserRepository
             this._configuration = _configuration;
             this._mapper = _mapper;
         }
+        #endregion
 
+        #region Public Methods
         public async Task<IdentityResult> Register(Register register)
         {
             var user = new Users
@@ -150,5 +154,6 @@ namespace Splitwise.Repository.UserRepository
             return this._userManager.Users.Any(e => e.Email == userEmail);
             //throw new NotImplementedException();
         }
+        #endregion
     }
 }

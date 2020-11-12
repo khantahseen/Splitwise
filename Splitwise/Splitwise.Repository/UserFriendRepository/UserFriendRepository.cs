@@ -15,18 +15,22 @@ namespace Splitwise.Repository.UserFriendRepository
 {
     public class UserFriendRepository : IUserFriendRepository
     {
+        #region Private Variables
         private SplitwiseDbContext _context;
         private readonly IUsersRepository _usersRepository;
         private readonly IMapper _mapper;
+        #endregion
 
+        #region Constructor
         public UserFriendRepository(SplitwiseDbContext _context, IUsersRepository _usersRepository, IMapper _mapper)
         {
             this._context = _context;
             this._usersRepository = _usersRepository;
             this._mapper = _mapper;
-
         }
+        #endregion
 
+        #region Public Mehods
         public async Task<IEnumerable<UsersAC>> GetAllFriends(string userId)
         {
             var users = await this._context.UserFriend
@@ -80,5 +84,6 @@ namespace Splitwise.Repository.UserFriendRepository
             return _context.UserFriend.Any(e => (e.UserId == userId) && (e.FriendId == friendId));
             //throw new NotImplementedException();
         }
+        #endregion
     }
 }

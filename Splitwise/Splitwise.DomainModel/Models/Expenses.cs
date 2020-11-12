@@ -7,6 +7,7 @@ namespace Splitwise.DomainModel.Models
 {
     public class Expenses
     {
+        #region Properties
         public int Id { get; set; }
 
         public int? GroupId { get; set; }
@@ -21,6 +22,7 @@ namespace Splitwise.DomainModel.Models
         public string Currency { get; set; }
         public int Total { get; set; }
         public string SplitBy { get; set; }
-        
+        #endregion
+
     }
 }

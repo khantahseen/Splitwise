@@ -14,13 +14,18 @@ namespace Splitwise.Core.ApiControllers
     [ApiController]
     public class PayeesController:ControllerBase
     {
+        #region Private Variables
         private readonly IPayeeRepository _payeesRepository;
+        #endregion
 
+        #region Constructors
         public PayeesController(IPayeeRepository payeesRepository)
         {
             this._payeesRepository = payeesRepository;
         }
+        #endregion
 
+        #region Public Methods
         // GET: api/Payees
         [HttpGet]
         public IEnumerable<PayeesAC> GetPayees()
@@ -89,10 +94,13 @@ namespace Splitwise.Core.ApiControllers
             return Ok();
             //CreatedAtAction("GetPayees", new { id = payees.Id }, payees);
         }
+        #endregion
 
+        #region Private Methods
         private bool PayeesExists(int id)
         {
             return _payeesRepository.PayeeExists(id);
         }
+        #endregion
     }
 }

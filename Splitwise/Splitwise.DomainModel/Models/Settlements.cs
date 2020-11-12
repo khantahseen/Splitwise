@@ -7,6 +7,7 @@ namespace Splitwise.DomainModel.Models
 {
     public class Settlements
     {
+        #region Properties
         public int Id { get; set; }
 
         public int? GroupId { get; set; }
@@ -25,5 +26,6 @@ namespace Splitwise.DomainModel.Models
         [ForeignKey("ExpenseId")]
         public Expenses SettleExpense { get; set; }
         public int Amount { get; set; }
+        #endregion
     }
 }

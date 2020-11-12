@@ -14,17 +14,22 @@ namespace Splitwise.Repository.GroupMemberRepository
 {
     public class GroupMemberRepository : IGroupMemberRepository
     {
+        #region Private Variables
         private SplitwiseDbContext _context;
         private readonly IMapper _mapper;
         private readonly IDataRepository _dataRepository;
+        #endregion
 
+        #region Constructors
         public GroupMemberRepository(SplitwiseDbContext _context, IMapper _mapper, IDataRepository _dataRepository)
         {
             this._context = _context;
             this._mapper = _mapper;
             this._dataRepository = _dataRepository;
         }
+        #endregion
 
+        #region Public Methods
         public void CreateGroupMember(GroupMember GroupMember)
         {
             _context.Add(GroupMember);
@@ -59,5 +64,6 @@ namespace Splitwise.Repository.GroupMemberRepository
         {
             throw new NotImplementedException();
         }
+        #endregion
     }
 }

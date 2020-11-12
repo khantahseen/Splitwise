@@ -14,13 +14,19 @@ namespace Splitwise.Core.ApiControllers
     [ApiController]
     public class SettlementsController:ControllerBase
     {
+        #region Private Variables
         private readonly ISettlementRepository _settlementsRepository;
+        #endregion
 
+        #region Constructors
         public SettlementsController(ISettlementRepository settlementsRepository)
         {
             this._settlementsRepository = settlementsRepository;
         }
+        #endregion
 
+
+        #region Public Methods
         // GET: api/Settlements
         [HttpGet]
         public IEnumerable<SettlementsAC> GetSettlements()
@@ -80,10 +86,13 @@ namespace Splitwise.Core.ApiControllers
 
             return Ok();
         }
+        #endregion
 
+        #region Private Methods
         private bool SettlementsExists(int id)
         {
             return _settlementsRepository.SettlementExists(id);
         }
+        #endregion
     }
 }

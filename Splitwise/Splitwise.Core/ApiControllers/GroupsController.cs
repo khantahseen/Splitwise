@@ -14,13 +14,19 @@ namespace Splitwise.Core.ApiControllers
     [ApiController]
     public class GroupsController:ControllerBase
     {
+        #region Private Variables
         private readonly IGroupRepository _groupRepository;
+        #endregion
 
+        #region Constructors
         public GroupsController(IGroupRepository groupRepository)
         {
             this._groupRepository = groupRepository;
         }
+        #endregion
 
+
+        #region Public Methods
         // GET: api/Groups
         [HttpGet]
         public IEnumerable<GroupsAC> GetGroups()
@@ -110,12 +116,15 @@ namespace Splitwise.Core.ApiControllers
             }
             return NotFound();
         }
+        #endregion
 
+        #region Private Methods
         private bool GroupsExists(int id)
         {
             return _groupRepository.GroupExists(id);
         }
+        #endregion
     }
 
-  
+
 }

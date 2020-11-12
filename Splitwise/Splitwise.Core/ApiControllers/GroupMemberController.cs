@@ -13,15 +13,18 @@ namespace Splitwise.Core.ApiControllers
     [ApiController]
     public class GroupMemberController:ControllerBase
     {
+        #region Private Variables
         private readonly IGroupMemberRepository _groupMemberRepository;
+        #endregion
 
-        public GroupMemberController(IGroupMemberRepository groupMemberRepository)
+        #region Constructors
+        public GroupMemberController(IGroupMemberRepository _groupMemberRepository)
         {
-            this._groupMemberRepository = groupMemberRepository;
+            this._groupMemberRepository = _groupMemberRepository;
         }
+        #endregion
 
-  
-        
+        #region Public Methods
         // GET: api/GroupMember/5
         [HttpGet("{id}")]
         public ActionResult<IEnumerable<GroupMemberAC>> GetGroupMember([FromRoute] int id)
@@ -76,11 +79,14 @@ namespace Splitwise.Core.ApiControllers
 
             return Ok(groupMember);
         }
+        #endregion
 
+        #region Private Methods
         private bool GroupMemberExists(int id)
         {
             return _groupMemberRepository.GroupMemberExists(id);
         }
+        #endregion
 
     }
 }

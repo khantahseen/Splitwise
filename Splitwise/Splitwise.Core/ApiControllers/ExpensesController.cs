@@ -14,13 +14,18 @@ namespace Splitwise.Core.ApiControllers
     [ApiController]
     public class ExpensesController:ControllerBase
     {
+        #region Private Variables
         private readonly IExpenseRepository _expensesRepository;
+        #endregion
 
+        #region Constructors
         public ExpensesController(IExpenseRepository expensesRepository)
         {
             this._expensesRepository = expensesRepository;
         }
+        #endregion
 
+        #region Public Methods
         //GET: api/Expenses
         [HttpGet]
         public IEnumerable<ExpensesAC> GetExpenses()
@@ -118,13 +123,13 @@ namespace Splitwise.Core.ApiControllers
             }
             return NotFound();
         }
+        #endregion
 
-        
-
+        #region Private Methods
         private bool ExpensesExists(int id)
         {
             return _expensesRepository.ExpenseExists(id);
         }
-
+        #endregion
     }
 }

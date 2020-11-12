@@ -13,16 +13,20 @@ namespace Splitwise.Core.ApiControllers
     [ApiController]
     public class UserFriendController:ControllerBase
     {
+        #region Private Variables
         private readonly IUserFriendRepository _userFriendRepository;
         private readonly IUsersRepository _usersRepository;
+        #endregion
 
+        #region Constructors
         public UserFriendController(IUserFriendRepository _userFriendRepository, IUsersRepository _usersRepository)
         {
             this._userFriendRepository = _userFriendRepository;
             this._usersRepository = _usersRepository;
         }
+        #endregion
 
-
+        #region Public Methods
         // GET: api/UserFriends/5
         [HttpGet("{userId}")]
         public async Task<ActionResult<IEnumerable<UsersAC>>> GetAllFriends([FromRoute] string userId)
@@ -66,6 +70,9 @@ namespace Splitwise.Core.ApiControllers
             }
             return BadRequest();
         }
+        #endregion
+
+        #region Private Methods
         private bool FriendExistsById(string userId, string userFriendId)
         {
             return _userFriendRepository.FriendExistsById(userId, userFriendId);
@@ -74,5 +81,6 @@ namespace Splitwise.Core.ApiControllers
         {
             return _userFriendRepository.FriendExistsByEmail(userId, userFriendEmail);
         }
+        #endregion
     }
 }

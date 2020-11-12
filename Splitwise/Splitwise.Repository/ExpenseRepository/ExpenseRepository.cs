@@ -13,14 +13,20 @@ namespace Splitwise.Repository.ExpenseRepository
 {
     public class ExpenseRepository : IExpenseRepository
     {
+        #region Private Variables
         private SplitwiseDbContext _context;
         private readonly IMapper _mapper;
-       
+        #endregion
+
+        #region Constructors
         public ExpenseRepository(SplitwiseDbContext _context, IMapper _mapper)
         {
             this._mapper = _mapper;
             this._context = _context;
         }
+        #endregion
+
+        #region Public Methods
         public async Task<Expenses> CreateExpense(Expenses Expense)
         {
             _context.Add(Expense);
@@ -80,7 +86,7 @@ namespace Splitwise.Repository.ExpenseRepository
             _context.Expenses.Update(expense);
             await _context.SaveChangesAsync();
         }
+        #endregion
 
-      
     }
 }

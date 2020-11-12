@@ -15,11 +15,14 @@ namespace Splitwise.Repository.SettlementRepository
 {
     public class SettlementRepository : ISettlementRepository
     {
+        #region Private Variables
         private SplitwiseDbContext _context;
         private readonly IMapper _mapper;
         private readonly IPayerRepository _payerRepository;
         private readonly IPayeeRepository _payeeRepository;
+        #endregion
 
+        #region Constructors
         public SettlementRepository(SplitwiseDbContext _context, IMapper _mapper, IPayerRepository _payerRepository, IPayeeRepository _payeeRepository)
         {
             this._mapper = _mapper;
@@ -27,18 +30,21 @@ namespace Splitwise.Repository.SettlementRepository
             this._payerRepository = _payerRepository;
             this._payeeRepository = _payeeRepository;
         }
+        #endregion
+
+        #region Public Methods
         public async Task CreateSettlement(Settlements settlement)
         {
             _context.Add(settlement);
            var payerToUpdate = this._context.Payers.Where(e => (e.ExpenseId == settlement.ExpenseId) && (e.PayerId == settlement.PayeeId))
                .FirstOrDefault();
             payerToUpdate.PayerShare = payerToUpdate.PayerShare + settlement.Amount;
-            //var payerToUpdateAC = _mapper.Map<PayerAC>(payerToUpdate);
+            
             await this._payerRepository.UpdatePayer(settlement.PayeeId, settlement.ExpenseId, payerToUpdate);
             var payeeToUpdate = this._context.Payees.Where(e => (e.ExpenseId == settlement.ExpenseId) && (e.PayeeId == settlement.PayerId))
                 .FirstOrDefault();
             payeeToUpdate.PayeeShare = payeeToUpdate.PayeeShare - settlement.Amount;
-            //var payeeToUpdateAC = _mapper.Map<PayeeAC>(payeeToUpdate);
+           
             await this._payeeRepository.UpdatePayee(settlement.PayerId, settlement.ExpenseId, payeeToUpdate);
             await _context.SaveChangesAsync();
         }
@@ -73,6 +79,6 @@ namespace Splitwise.Repository.SettlementRepository
         {
             return _context.Settlements.Any(e => e.Id == id);
         }
-
+        #endregion
     }
 }

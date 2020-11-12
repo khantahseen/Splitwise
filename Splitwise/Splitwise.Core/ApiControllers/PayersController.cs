@@ -14,13 +14,18 @@ namespace Splitwise.Core.ApiControllers
     [ApiController]
     public class PayersController:ControllerBase
     {
+        #region Private Variables
         private readonly IPayerRepository _payersRepository;
+        #endregion
 
+        #region Constructors
         public PayersController(IPayerRepository payersRepository)
         {
             this._payersRepository = payersRepository;
         }
+        #endregion
 
+        #region Public Methods
         // GET: api/Payers
         [HttpGet]
         public IEnumerable<PayersAC> GetPayers()
@@ -127,10 +132,13 @@ namespace Splitwise.Core.ApiControllers
 
             return Ok(payers);
         }
+        #endregion
 
+        #region Private Methods
         private bool PayersExists(int id)
         {
             return _payersRepository.PayerExists(id);
         }
+        #endregion 
     }
 }
