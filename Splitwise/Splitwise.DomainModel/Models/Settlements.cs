@@ -20,8 +20,10 @@ namespace Splitwise.DomainModel.Models
         public string PayeeId { get; set; }
         [ForeignKey("PayeeId")]
         public Users Payee { get; set; }
-
         public DateTime DateTime { get; set; }
+        public int ExpenseId { get; set; }
+        [ForeignKey("ExpenseId")]
+        public Expenses SettleExpense { get; set; }
         public int Amount { get; set; }
     }
 }

@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using Splitwise.DomainModel;
 using Splitwise.DomainModel.ApplicationClasses;
 using Splitwise.DomainModel.Models;
+using Splitwise.Repository.PayeeRepository;
+using Splitwise.Repository.PayerRepository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,15 +17,30 @@ namespace Splitwise.Repository.SettlementRepository
     {
         private SplitwiseDbContext _context;
         private readonly IMapper _mapper;
+        private readonly IPayerRepository _payerRepository;
+        private readonly IPayeeRepository _payeeRepository;
 
-        public SettlementRepository(SplitwiseDbContext _context, IMapper _mapper)
+        public SettlementRepository(SplitwiseDbContext _context, IMapper _mapper, IPayerRepository _payerRepository, IPayeeRepository _payeeRepository)
         {
             this._mapper = _mapper;
             this._context = _context;
+            this._payerRepository = _payerRepository;
+            this._payeeRepository = _payeeRepository;
         }
-        public void CreateSettlement(Settlements Settlement)
+        public async Task CreateSettlement(Settlements settlement)
         {
-            _context.Add(Settlement);
+            _context.Add(settlement);
+           var payerToUpdate = this._context.Payers.Where(e => (e.ExpenseId == settlement.ExpenseId) && (e.PayerId == settlement.PayeeId))
+               .FirstOrDefault();
+            payerToUpdate.PayerShare = payerToUpdate.PayerShare + settlement.Amount;
+            //var payerToUpdateAC = _mapper.Map<PayerAC>(payerToUpdate);
+            await this._payerRepository.UpdatePayer(settlement.PayeeId, settlement.ExpenseId, payerToUpdate);
+            var payeeToUpdate = this._context.Payees.Where(e => (e.ExpenseId == settlement.ExpenseId) && (e.PayeeId == settlement.PayerId))
+                .FirstOrDefault();
+            payeeToUpdate.PayeeShare = payeeToUpdate.PayeeShare - settlement.Amount;
+            //var payeeToUpdateAC = _mapper.Map<PayeeAC>(payeeToUpdate);
+            await this._payeeRepository.UpdatePayee(settlement.PayerId, settlement.ExpenseId, payeeToUpdate);
+            await _context.SaveChangesAsync();
         }
 
         public Task<SettlementsAC> GetSettlement(int id)
@@ -39,7 +56,7 @@ namespace Splitwise.Repository.SettlementRepository
         public IEnumerable<SettlementsAC> GetSettlementsByGroupId(int id)
         {
             return _mapper.Map<IEnumerable<SettlementsAC>>(_context.Settlements.Include(p => p.Payee)
-                .Include(l => l.Payer).Where(s => s.GroupId == id).ToList());
+                .Include(l => l.Payer).Include(g=>g.Group).Where(s => s.GroupId == id).ToList());
         }
 
         public IEnumerable<SettlementsAC> GetSettlementsByUserId(string id)

@@ -18,5 +18,6 @@ namespace Splitwise.DomainModel.Models
         public Users User { get; set; }
 
         public int PayeeShare { get; set; }
+        public int PayeeInitialShare { get; set; }
     }
 }

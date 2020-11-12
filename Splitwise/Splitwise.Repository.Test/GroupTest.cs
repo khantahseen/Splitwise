@@ -10,12 +10,6 @@ namespace Splitwise.Repository.Test
     [TestClass]
     public class UnitTest2
     {
-        GroupsRepository user = new GroupsRepository();
-        [TestMethod]
-        public void CreateUserTest()
-        {
-            Groups u1 = new Groups();
-           // Assert.ThrowsExceptionAsync<NotImplementedException>(() => user.CreateGroup(u1));
-        }
+       
     }
 }

@@ -242,6 +242,9 @@ namespace Splitwise.DomainModel.Migrations
                     b.Property<string>("PayeeId")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<int>("PayeeInitialShare")
+                        .HasColumnType("int");
+
                     b.Property<int>("PayeeShare")
                         .HasColumnType("int");
 
@@ -270,6 +273,9 @@ namespace Splitwise.DomainModel.Migrations
                     b.Property<string>("PayerId")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<int>("PayerInitialShare")
+                        .HasColumnType("int");
+
                     b.Property<int>("PayerShare")
                         .HasColumnType("int");
 
@@ -295,6 +301,9 @@ namespace Splitwise.DomainModel.Migrations
                     b.Property<DateTime>("DateTime")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("ExpenseId")
+                        .HasColumnType("int");
+
                     b.Property<int?>("GroupId")
                         .HasColumnType("int");
 
@@ -305,6 +314,8 @@ namespace Splitwise.DomainModel.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ExpenseId");
 
                     b.HasIndex("GroupId");
 
@@ -515,6 +526,12 @@ namespace Splitwise.DomainModel.Migrations
 
             modelBuilder.Entity("Splitwise.DomainModel.Models.Settlements", b =>
                 {
+                    b.HasOne("Splitwise.DomainModel.Models.Expenses", "SettleExpense")
+                        .WithMany()
+                        .HasForeignKey("ExpenseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Splitwise.DomainModel.Models.Groups", "Group")
                         .WithMany()
                         .HasForeignKey("GroupId");

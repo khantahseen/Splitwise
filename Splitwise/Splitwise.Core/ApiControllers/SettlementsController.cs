@@ -75,8 +75,8 @@ namespace Splitwise.Core.ApiControllers
                 return BadRequest(ModelState);
             }
 
-            _settlementsRepository.CreateSettlement(settlements);
-            await _settlementsRepository.Save();
+            await _settlementsRepository.CreateSettlement(settlements);
+            //await _settlementsRepository.Save();
 
             return Ok();
         }

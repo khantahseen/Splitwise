@@ -13,7 +13,7 @@ namespace Splitwise.Repository.SettlementRepository
         IEnumerable<SettlementsAC> GetSettlementsByUserId(string id);
         IEnumerable<SettlementsAC> GetSettlementsByGroupId(int id);
         Task<SettlementsAC> GetSettlement(int id);
-        void CreateSettlement(Settlements Settlement);
+        Task CreateSettlement(Settlements settlement);
         bool SettlementExists(int id);
         Task Save();
     }

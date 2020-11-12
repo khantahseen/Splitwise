@@ -15,6 +15,7 @@ namespace Splitwise.Repository.PayerRepository
         Task<IEnumerable<PayersAC>> GetExpensesByPayerId(string payerId);
         Task<PayersAC> GetPayer(int id);
         void CreatePayer(Payers Payer);
+        Task UpdatePayer(string payerId, int expenseId, Payers payer);
         Task DeletePayer(PayersAC Payer);
         bool PayerExists(int id);
         Task Save();

@@ -62,5 +62,14 @@ namespace Splitwise.Repository.PayeeRepository
                 .ToListAsync();
             return this._mapper.Map<IEnumerable<PayeesAC>>(expenses);
         }
+
+        public async Task UpdatePayee(string payeeid, int expenseid, Payees payee)
+        {
+            var payeeUpdate = this._context.Payees.Where(e => (e.PayeeId == payeeid) && (e.ExpenseId == expenseid)).FirstOrDefault();
+            payeeUpdate.PayeeShare = payee.PayeeShare;
+            this._context.Payees.Update(payeeUpdate);
+            await _context.SaveChangesAsync();
+            //throw new NotImplementedException();
+        }
     }
 }
